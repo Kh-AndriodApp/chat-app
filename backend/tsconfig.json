@@ -9,9 +9,15 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",                       // REQUIRED for paths to work
+    "paths": {
+      "@models/*": ["src/models/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"],
+      "@prisma-sys-client": ["prisma/app/generated/prisma/client"]
+    }
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*", "prisma/**/*"]
 }

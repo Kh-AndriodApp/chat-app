@@ -1,0 +1,259 @@
+// Prisma schema for PostgreSQL entities
+generator client {
+  provider = "prisma-client-js"
+  output   = "app/generated/prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserStatus {
+  OFFLINE
+  ONLINE
+  BUSY
+  AWAY
+  DO_NOT_DISTURB
+}
+
+enum DeviceType {
+  IOS
+  ANDROID
+  WEB
+  DESKTOP
+}
+
+enum ThemePreference {
+  LIGHT
+  DARK
+  SYSTEM_DEFAULT
+}
+
+enum ChatRoomType {
+  PRIVATE
+  GROUP
+  CHANNEL
+  PUBLIC
+  DIRECT_MESSAGE
+  ANNOUNCEMENT
+}
+
+enum ChatRoomRole {
+  USER
+  MODERATOR
+  ADMIN
+  SUPER_ADMIN
+  GUEST
+}
+
+enum RelationshipStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  BLOCKED
+}
+
+enum VirusScanStatus {
+  PENDING
+  CLEAN
+  INFECTED
+  ERROR
+}
+
+model User {
+  id                   Int             @id @default(autoincrement())
+  documentId           String          @unique @default(uuid()) @db.Uuid
+  name                 String          @db.VarChar(100)
+  email                String          @unique @db.VarChar(255)
+  username             String          @unique @db.VarChar(50)
+  password             String          @db.VarChar(255)
+  profilePictureUrl    String?         @db.VarChar(200)
+  bio                  String?         @db.VarChar(500)
+  phoneNumber          String          @db.VarChar(15)
+  lastActivityDate     DateTime        @default(now())
+  status               UserStatus      @default(ONLINE)
+  isActive             Boolean         @default(true)
+  isVerified           Boolean         @default(false)
+  themePreference      ThemePreference @default(LIGHT)
+  notificationSettings Json            @default("{}")
+  privacySettings      Json            @default("{}")
+
+  // Audit fields
+  createdBy Int
+  updatedBy Int
+  deletedBy Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  sessions               UserSession[]
+  chatRoomMemberships    ChatRoomMember[]
+  createdChatRooms       ChatRoom[]         @relation("CreatedBy")
+  requestedRelationships UserRelationship[] @relation("Requester")
+  receivedRelationships  UserRelationship[] @relation("Addressee")
+  devices                UserDevice[]
+  uploadedFiles          Attachment[]
+
+  @@map("users")
+}
+
+model UserSession {
+  id             Int      @id @default(autoincrement())
+  documentId     String   @unique @default(uuid()) @db.Uuid
+  userId         String   @db.Uuid
+  sessionToken   String   @db.VarChar(255)
+  refreshToken   String   @db.VarChar(255)
+  deviceInfo     Json?
+  ipAddress      String?  @db.Inet
+  userAgent      String?
+  isActive       Boolean  @default(true)
+  expiresAt      DateTime
+  lastActivityAt DateTime @default(now())
+
+  // Audit fields
+  createdBy Int
+  updatedBy Int
+  deletedBy Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  user User @relation(fields: [userId], references: [documentId], onDelete: Cascade)
+
+  @@map("user_sessions")
+}
+
+model UserDevice {
+  id          Int        @id @default(autoincrement())
+  documentId  String     @unique @default(uuid()) @db.Uuid
+  userId      String     @db.Uuid
+  deviceToken String     @db.VarChar(500)
+  deviceType  DeviceType
+  deviceName  String?    @db.VarChar(100)
+  appVersion  String?    @db.VarChar(20)
+  osVersion   String?    @db.VarChar(50)
+  isActive    Boolean    @default(true)
+  lastUsedAt  DateTime   @default(now())
+
+  // Audit fields
+  createdBy Int
+  updatedBy Int
+  deletedBy Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  user User @relation(fields: [userId], references: [documentId], onDelete: Cascade)
+
+  @@map("user_devices")
+}
+
+model UserRelationship {
+  id          Int                @id @default(autoincrement())
+  documentId  String             @unique @default(uuid()) @db.Uuid
+  requesterId String             @db.Uuid
+  addresseeId String             @db.Uuid
+  status      RelationshipStatus @default(PENDING)
+
+  // Audit fields
+  createdBy Int
+  updatedBy Int
+  deletedBy Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  requester User @relation("Requester", fields: [requesterId], references: [documentId], onDelete: Cascade)
+  addressee User @relation("Addressee", fields: [addresseeId], references: [documentId], onDelete: Cascade)
+
+  @@unique([requesterId, addresseeId])
+  @@map("user_relationships")
+}
+
+model ChatRoom {
+  id              BigInt       @id @default(autoincrement()) @db.BigInt
+  documentId      String       @unique @default(uuid()) @db.Uuid
+  name            String       @db.VarChar(100)
+  type            ChatRoomType
+  description     String?      @db.VarChar(500)
+  lastMessageDate DateTime     @default(now())
+
+  // Audit fields
+  createdBy Int
+  updatedBy Int
+  deletedBy Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  members ChatRoomMember[]
+  creator User             @relation("CreatedBy", fields: [createdBy], references: [id])
+
+  @@map("chat_rooms")
+}
+
+model ChatRoomMember {
+  id                  BigInt       @id @default(autoincrement()) @db.BigInt
+  documentId          String       @unique @default(uuid()) @db.Uuid
+  chatRoomId          String       @db.Uuid
+  userId              String       @db.Uuid
+  isMuted             Boolean      @default(false)
+  isArchived          Boolean      @default(false)
+  isBanned            Boolean      @default(false)
+  lastReadMessageId   String       @default("00000000-0000-0000-0000-000000000000") @db.Uuid
+  role                ChatRoomRole @default(USER)
+  leftAt              DateTime?
+  unreadMessagesCount Int          @default(0)
+  permissions         Json         @default("{}")
+
+  // Audit fields
+  createdBy Int
+  updatedBy Int
+  deletedBy Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  chatRoom ChatRoom @relation(fields: [chatRoomId], references: [documentId], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [documentId], onDelete: Cascade)
+
+  @@unique([chatRoomId, userId])
+  @@map("chat_room_members")
+}
+
+model Attachment {
+  id              Int             @id @default(autoincrement())
+  documentId      String          @unique @default(uuid()) @db.Uuid
+  originalName    String          @db.VarChar(255)
+  fileName        String          @db.VarChar(255)
+  mimeType        String          @db.VarChar(100)
+  fileSize        BigInt          @db.BigInt
+  filePath        String
+  thumbnailPath   String?
+  uploadedBy      String          @db.Uuid
+  isPublic        Boolean         @default(false)
+  metadata        Json            @default("{}")
+  virusScanStatus VirusScanStatus @default(PENDING)
+  virusScanResult Json?
+  expiresAt       DateTime?
+
+  // Audit fields
+  createdBy Int
+  updatedBy Int
+  deletedBy Int       @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+  deletedAt DateTime?
+
+  // Relations
+  uploader User @relation(fields: [uploadedBy], references: [documentId], onDelete: Cascade)
+
+  @@map("attachments")
+}
