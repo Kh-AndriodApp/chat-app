@@ -1,16 +1,17 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { authService } from '../services/auth.service';
+import { User } from '../models/postgres';
 
 // Extend FastifyRequest to include user property
 declare module 'fastify' {
   interface FastifyRequest {
-    user?: any;
+    user?: Omit<User, 'password'>;
     deviceInfo?: any;
   }
 }
 
 export interface AuthenticatedRequest extends FastifyRequest {
-  user: any;
+  user: Omit<User, 'password'>;
 }
 
 // Authentication middleware for protected routes

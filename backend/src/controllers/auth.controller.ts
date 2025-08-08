@@ -1,15 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { authService } from '../services/auth.service';
 import {
-  registerSchema,
-  loginSchema,
-  refreshTokenSchema,
-  changePasswordSchema,
-  passwordResetRequestSchema,
-  passwordResetSchema,
-  logoutSchema,
-  updateProfileSchema,
-  updateUserSettingsSchema,
   RegisterRequest,
   LoginRequest,
   RefreshTokenRequest,
@@ -26,18 +17,9 @@ interface AuthenticatedRequest extends FastifyRequest {
 }
 
 class AuthController {
-  async register(request: FastifyRequest, reply: FastifyReply) {
+  async register(request: FastifyRequest<{ Body: RegisterRequest }>, reply: FastifyReply) {
     try {
-      const validation = registerSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const data = validation.data as RegisterRequest;
+      const data = request.body;
       const result = await authService.register(data);
 
       return reply.status(201).send({
@@ -67,18 +49,9 @@ class AuthController {
     }
   }
 
-  async login(request: FastifyRequest, reply: FastifyReply) {
+  async login(request: FastifyRequest<{ Body: LoginRequest }>, reply: FastifyReply) {
     try {
-      const validation = loginSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const data = validation.data as LoginRequest;
+      const data = request.body;
       
       // Extract request metadata
       const loginCredentials = {
@@ -123,18 +96,9 @@ class AuthController {
     }
   }
 
-  async refreshToken(request: FastifyRequest, reply: FastifyReply) {
+  async refreshToken(request: FastifyRequest<{ Body: RefreshTokenRequest }>, reply: FastifyReply) {
     try {
-      const validation = refreshTokenSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const { refreshToken } = validation.data as RefreshTokenRequest;
+      const { refreshToken } = request.body;
       const result = await authService.refreshTokens(refreshToken);
 
       return reply.status(200).send({
@@ -157,18 +121,9 @@ class AuthController {
     }
   }
 
-  async logout(request: AuthenticatedRequest, reply: FastifyReply) {
+  async logout(request: AuthenticatedRequest & FastifyRequest<{ Body: LogoutRequest }>, reply: FastifyReply) {
     try {
-      const validation = logoutSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const data = validation.data as LogoutRequest;
+      const data = request.body;
       const sessionToken = data.sessionToken || request.headers.authorization?.replace('Bearer ', '');
 
       if (!sessionToken) {
@@ -215,7 +170,7 @@ class AuthController {
     }
   }
 
-  async changePassword(request: AuthenticatedRequest, reply: FastifyReply) {
+  async changePassword(request: AuthenticatedRequest & FastifyRequest<{ Body: ChangePasswordRequest }>, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({
@@ -224,16 +179,7 @@ class AuthController {
         });
       }
 
-      const validation = changePasswordSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const { oldPassword, newPassword } = validation.data as ChangePasswordRequest;
+      const { oldPassword, newPassword } = request.body;
       await authService.changePassword(request.user.documentId, oldPassword, newPassword);
 
       return reply.status(200).send({
@@ -257,18 +203,9 @@ class AuthController {
     }
   }
 
-  async requestPasswordReset(request: FastifyRequest, reply: FastifyReply) {
+  async requestPasswordReset(request: FastifyRequest<{ Body: PasswordResetRequestRequest }>, reply: FastifyReply) {
     try {
-      const validation = passwordResetRequestSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const { identifier } = validation.data as PasswordResetRequestRequest;
+      const { identifier } = request.body;
       const message = await authService.requestPasswordReset(identifier);
 
       return reply.status(200).send({
@@ -283,18 +220,9 @@ class AuthController {
     }
   }
 
-  async resetPassword(request: FastifyRequest, reply: FastifyReply) {
+  async resetPassword(request: FastifyRequest<{ Body: PasswordResetRequest }>, reply: FastifyReply) {
     try {
-      const validation = passwordResetSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const { resetToken, newPassword } = validation.data as PasswordResetRequest;
+      const { resetToken, newPassword } = request.body;
       await authService.resetPassword(resetToken, newPassword);
 
       return reply.status(200).send({
@@ -335,7 +263,7 @@ class AuthController {
     }
   }
 
-  async updateProfile(request: AuthenticatedRequest, reply: FastifyReply) {
+  async updateProfile(request: AuthenticatedRequest & FastifyRequest<{ Body: UpdateProfileRequest }>, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({
@@ -344,16 +272,7 @@ class AuthController {
         });
       }
 
-      const validation = updateProfileSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const data = validation.data as UpdateProfileRequest;
+      const data = request.body;
       
       // Import prisma here to avoid circular dependencies
       const { prisma } = await import('../models/postgres');
@@ -384,7 +303,7 @@ class AuthController {
     }
   }
 
-  async updateSettings(request: AuthenticatedRequest, reply: FastifyReply) {
+  async updateSettings(request: AuthenticatedRequest & FastifyRequest<{ Body: UpdateUserSettingsRequest }>, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({
@@ -393,16 +312,7 @@ class AuthController {
         });
       }
 
-      const validation = updateUserSettingsSchema.safeParse(request.body);
-      if (!validation.success) {
-        return reply.status(400).send({
-          success: false,
-          message: 'Validation failed',
-          errors: validation.error.format(),
-        });
-      }
-
-      const data = validation.data as UpdateUserSettingsRequest;
+      const data = request.body;
       
       // Import prisma here to avoid circular dependencies
       const { prisma } = await import('../models/postgres');
