@@ -40,12 +40,10 @@ class AuthService {
   private readonly refreshTokenExpiry = '7d';
 
   async register(data: RegisterData): Promise<AuthResult> {
-    // Validate that at least email or phone is provided
     if (!data.email && !data.phoneNumber) {
       throw new Error('Either email or phone number is required');
     }
 
-    // Check if user already exists
     const existingUser = await this.findUserByIdentifier(
       data.email || data.phoneNumber || data.username
     );
@@ -54,10 +52,7 @@ class AuthService {
       throw new Error('User already exists with this email, phone, or username');
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(data.password, this.saltRounds);
-
-    // Create user
     const user = await prisma.user.create({
       data: {
         documentId: uuidv4(),
@@ -67,7 +62,7 @@ class AuthService {
         password: hashedPassword,
         phoneNumber: data.phoneNumber || '',
         bio: data.bio,
-        createdBy: 0, // System created
+        createdBy: 0,
         updatedBy: 0,
       },
     });

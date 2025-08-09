@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { required } from 'zod/v4/core/util.cjs';
 
 // Device info schema
 export const deviceInfoSchema = z.object({
@@ -143,7 +142,6 @@ export const errorResponseSchema = z.object({
 // Route schemas for fastify-type-provider-zod
 export const authRouteSchemas = {
   register: {
-    required: ['email', 'password', 'name'],
     summary: 'Register a new user',
     description: 'Register a new user with email/phone and username',
     tags: ['Authentication'],
@@ -205,9 +203,6 @@ export const authRouteSchemas = {
     summary: 'Get current user',
     description: 'Get current authenticated user information',
     tags: ['Authentication'],
-    headers: z.object({
-      authorization: z.string().describe('Bearer token'),
-    }),
     response: {
       200: z.object({
         success: z.boolean(),
@@ -223,9 +218,6 @@ export const authRouteSchemas = {
     summary: 'Update user profile',
     description: 'Update user profile information',
     tags: ['Authentication'],
-    headers: z.object({
-      authorization: z.string().describe('Bearer token'),
-    }),
     body: updateProfileSchema,
     response: {
       200: z.object({
@@ -243,9 +235,6 @@ export const authRouteSchemas = {
     summary: 'Update user settings',
     description: 'Update user preferences and settings',
     tags: ['Authentication'],
-    headers: z.object({
-      authorization: z.string().describe('Bearer token'),
-    }),
     body: updateUserSettingsSchema,
     response: {
       200: z.object({
@@ -263,9 +252,6 @@ export const authRouteSchemas = {
     summary: 'Change password',
     description: 'Change user password',
     tags: ['Authentication'],
-    headers: z.object({
-      authorization: z.string().describe('Bearer token'),
-    }),
     body: changePasswordSchema,
     response: {
       200: z.object({
@@ -280,9 +266,6 @@ export const authRouteSchemas = {
     summary: 'Logout from current session',
     description: 'Logout from current session',
     tags: ['Authentication'],
-    headers: z.object({
-      authorization: z.string().describe('Bearer token'),
-    }),
     body: logoutSchema,
     response: {
       200: z.object({
@@ -296,9 +279,6 @@ export const authRouteSchemas = {
     summary: 'Logout from all sessions',
     description: 'Logout from all devices and sessions',
     tags: ['Authentication'],
-    headers: z.object({
-      authorization: z.string().describe('Bearer token'),
-    }),
     response: {
       200: z.object({
         success: z.boolean(),

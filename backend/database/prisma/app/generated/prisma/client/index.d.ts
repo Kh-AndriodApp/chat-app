@@ -1924,12 +1924,12 @@ export namespace Prisma {
     id: number
     documentId: string
     name: string
-    email: string
+    email: string | null
     username: string
     password: string
     profilePictureUrl: string | null
     bio: string | null
-    phoneNumber: string
+    phoneNumber: string | null
     lastActivityDate: Date
     status: $Enums.UserStatus
     isActive: boolean
@@ -2101,12 +2101,12 @@ export namespace Prisma {
       id: number
       documentId: string
       name: string
-      email: string
+      email: string | null
       username: string
       password: string
       profilePictureUrl: string | null
       bio: string | null
-      phoneNumber: string
+      phoneNumber: string | null
       lastActivityDate: Date
       status: $Enums.UserStatus
       isActive: boolean
@@ -11064,12 +11064,12 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     documentId?: UuidFilter<"User"> | string
     name?: StringFilter<"User"> | string
-    email?: StringFilter<"User"> | string
+    email?: StringNullableFilter<"User"> | string | null
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     profilePictureUrl?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
-    phoneNumber?: StringFilter<"User"> | string
+    phoneNumber?: StringNullableFilter<"User"> | string | null
     lastActivityDate?: DateTimeFilter<"User"> | Date | string
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     isActive?: BoolFilter<"User"> | boolean
@@ -11096,12 +11096,12 @@ export namespace Prisma {
     id?: SortOrder
     documentId?: SortOrder
     name?: SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     username?: SortOrder
     password?: SortOrder
     profilePictureUrl?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
-    phoneNumber?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     lastActivityDate?: SortOrder
     status?: SortOrder
     isActive?: SortOrder
@@ -11136,7 +11136,7 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     profilePictureUrl?: StringNullableFilter<"User"> | string | null
     bio?: StringNullableFilter<"User"> | string | null
-    phoneNumber?: StringFilter<"User"> | string
+    phoneNumber?: StringNullableFilter<"User"> | string | null
     lastActivityDate?: DateTimeFilter<"User"> | Date | string
     status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     isActive?: BoolFilter<"User"> | boolean
@@ -11163,12 +11163,12 @@ export namespace Prisma {
     id?: SortOrder
     documentId?: SortOrder
     name?: SortOrder
-    email?: SortOrder
+    email?: SortOrderInput | SortOrder
     username?: SortOrder
     password?: SortOrder
     profilePictureUrl?: SortOrderInput | SortOrder
     bio?: SortOrderInput | SortOrder
-    phoneNumber?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     lastActivityDate?: SortOrder
     status?: SortOrder
     isActive?: SortOrder
@@ -11196,12 +11196,12 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     documentId?: UuidWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
-    email?: StringWithAggregatesFilter<"User"> | string
+    email?: StringNullableWithAggregatesFilter<"User"> | string | null
     username?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     profilePictureUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
-    phoneNumber?: StringWithAggregatesFilter<"User"> | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"User"> | string | null
     lastActivityDate?: DateTimeWithAggregatesFilter<"User"> | Date | string
     status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
@@ -11893,12 +11893,12 @@ export namespace Prisma {
   export type UserCreateInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -11925,12 +11925,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -11956,12 +11956,12 @@ export namespace Prisma {
   export type UserUpdateInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -11988,12 +11988,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -12020,12 +12020,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -12044,12 +12044,12 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -12069,12 +12069,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15324,12 +15324,12 @@ export namespace Prisma {
   export type UserCreateWithoutSessionsInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15355,12 +15355,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15401,12 +15401,12 @@ export namespace Prisma {
   export type UserUpdateWithoutSessionsInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15432,12 +15432,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15462,12 +15462,12 @@ export namespace Prisma {
   export type UserCreateWithoutDevicesInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15493,12 +15493,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15539,12 +15539,12 @@ export namespace Prisma {
   export type UserUpdateWithoutDevicesInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15570,12 +15570,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15600,12 +15600,12 @@ export namespace Prisma {
   export type UserCreateWithoutRequestedRelationshipsInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15631,12 +15631,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15666,12 +15666,12 @@ export namespace Prisma {
   export type UserCreateWithoutReceivedRelationshipsInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15697,12 +15697,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15743,12 +15743,12 @@ export namespace Prisma {
   export type UserUpdateWithoutRequestedRelationshipsInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15774,12 +15774,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15815,12 +15815,12 @@ export namespace Prisma {
   export type UserUpdateWithoutReceivedRelationshipsInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15846,12 +15846,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -15926,12 +15926,12 @@ export namespace Prisma {
   export type UserCreateWithoutCreatedChatRoomsInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -15957,12 +15957,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -16019,12 +16019,12 @@ export namespace Prisma {
   export type UserUpdateWithoutCreatedChatRoomsInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -16050,12 +16050,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -16115,12 +16115,12 @@ export namespace Prisma {
   export type UserCreateWithoutChatRoomMembershipsInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -16146,12 +16146,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -16233,12 +16233,12 @@ export namespace Prisma {
   export type UserUpdateWithoutChatRoomMembershipsInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -16264,12 +16264,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -16294,12 +16294,12 @@ export namespace Prisma {
   export type UserCreateWithoutUploadedFilesInput = {
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -16325,12 +16325,12 @@ export namespace Prisma {
     id?: number
     documentId?: string
     name: string
-    email: string
+    email?: string | null
     username: string
     password: string
     profilePictureUrl?: string | null
     bio?: string | null
-    phoneNumber: string
+    phoneNumber?: string | null
     lastActivityDate?: Date | string
     status?: $Enums.UserStatus
     isActive?: boolean
@@ -16371,12 +16371,12 @@ export namespace Prisma {
   export type UserUpdateWithoutUploadedFilesInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
@@ -16402,12 +16402,12 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     profilePictureUrl?: NullableStringFieldUpdateOperationsInput | string | null
     bio?: NullableStringFieldUpdateOperationsInput | string | null
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     isActive?: BoolFieldUpdateOperationsInput | boolean
