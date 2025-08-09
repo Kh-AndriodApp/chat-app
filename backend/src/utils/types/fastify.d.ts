@@ -1,4 +1,4 @@
-import { User } from '../models/postgres';
+import { User } from '../../models/postgres';
 
 declare module 'fastify' {
   interface FastifyRequest {

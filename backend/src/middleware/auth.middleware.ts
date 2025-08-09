@@ -1,4 +1,4 @@
-import { FastifyRequest, FastifyReply } from 'fastify';
+import { FastifyRequest, FastifyReply, HookHandlerDoneFunction } from 'fastify';
 import { authService } from '../services/auth.service';
 import { User } from '../models/postgres';
 
@@ -15,7 +15,7 @@ export interface AuthenticatedRequest extends FastifyRequest {
 }
 
 // Authentication middleware for protected routes
-export async function authenticateToken(request: FastifyRequest, reply: FastifyReply) {
+export async function authenticateToken(request: FastifyRequest, reply: FastifyReply, done: HookHandlerDoneFunction) {
   try {
     const authHeader = request.headers.authorization;
     
@@ -63,6 +63,7 @@ export async function authenticateToken(request: FastifyRequest, reply: FastifyR
 
     // Attach user to request object
     request.user = user;
+    done();
   } catch (error) {
     return reply.status(401).send({
       success: false,
@@ -71,7 +72,7 @@ export async function authenticateToken(request: FastifyRequest, reply: FastifyR
   }
 }
 
-// Optional authentication middleware (doesn't throw error if no token)
+/* // Optional authentication middleware (doesn't throw error if no token)
 export async function optionalAuthentication(request: FastifyRequest, reply: FastifyReply) {
   try {
     const authHeader = request.headers.authorization;
@@ -93,8 +94,8 @@ export async function optionalAuthentication(request: FastifyRequest, reply: Fas
   } catch {
     // Silently ignore authentication errors for optional auth
   }
-}
-
+} */
+/* 
 // Middleware to check if user has specific permissions
 export function requirePermission(permission: string) {
   return async function (request: FastifyRequest, reply: FastifyReply) {
@@ -215,4 +216,4 @@ export async function deviceInfo(request: FastifyRequest, reply: FastifyReply) {
 
   // Attach device info to request
   request.deviceInfo = deviceInfo;
-}
+} */

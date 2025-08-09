@@ -10,11 +10,8 @@ import {
   LogoutRequest,
   UpdateProfileRequest,
   UpdateUserSettingsRequest,
-} from '../utils/validators/auth.validator';
+} from '@chat-app/validators/auth.schemas';
 
-interface AuthenticatedRequest extends FastifyRequest {
-  user?: any;
-}
 
 class AuthController {
   async register(request: FastifyRequest<{ Body: RegisterRequest }>, reply: FastifyReply) {
@@ -121,7 +118,7 @@ class AuthController {
     }
   }
 
-  async logout(request: AuthenticatedRequest & FastifyRequest<{ Body: LogoutRequest }>, reply: FastifyReply) {
+  async logout(request:  FastifyRequest<{ Body: LogoutRequest }>, reply: FastifyReply) {
     try {
       const data = request.body;
       const sessionToken = data.sessionToken || request.headers.authorization?.replace('Bearer ', '');
@@ -147,7 +144,7 @@ class AuthController {
     }
   }
 
-  async logoutAll(request: AuthenticatedRequest, reply: FastifyReply) {
+  async logoutAll(request: FastifyRequest, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({
@@ -170,7 +167,7 @@ class AuthController {
     }
   }
 
-  async changePassword(request: AuthenticatedRequest & FastifyRequest<{ Body: ChangePasswordRequest }>, reply: FastifyReply) {
+  async changePassword(request: FastifyRequest<{ Body: ChangePasswordRequest }>, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({
@@ -239,7 +236,7 @@ class AuthController {
     }
   }
 
-  async getCurrentUser(request: AuthenticatedRequest, reply: FastifyReply) {
+  async getCurrentUser(request: FastifyRequest, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({
@@ -263,7 +260,7 @@ class AuthController {
     }
   }
 
-  async updateProfile(request: AuthenticatedRequest & FastifyRequest<{ Body: UpdateProfileRequest }>, reply: FastifyReply) {
+  async updateProfile(request: FastifyRequest<{ Body: UpdateProfileRequest }>, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({
@@ -303,7 +300,7 @@ class AuthController {
     }
   }
 
-  async updateSettings(request: AuthenticatedRequest & FastifyRequest<{ Body: UpdateUserSettingsRequest }>, reply: FastifyReply) {
+  async updateSettings(request: FastifyRequest<{ Body: UpdateUserSettingsRequest }>, reply: FastifyReply) {
     try {
       if (!request.user) {
         return reply.status(401).send({

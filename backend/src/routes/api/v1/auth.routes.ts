@@ -2,7 +2,7 @@ import { FastifyInstance } from 'fastify';
 import { ZodTypeProvider } from 'fastify-type-provider-zod';
 import { authController } from '../../../controllers/auth.controller';
 import { authenticateToken } from '../../../middleware/auth.middleware';
-import { authRouteSchemas } from '../../../utils/schemas/auth.schemas';
+import { authRouteSchemas } from '@chat-app/validators/auth.schemas';
 
 export default async function authRoutes(fastify: FastifyInstance) {
   // Register type provider
@@ -11,6 +11,9 @@ export default async function authRoutes(fastify: FastifyInstance) {
   // Public routes (no authentication required)
   
   // User registration
+  typedFastify.post('/register', {
+    schema: authRouteSchemas.register,
+  }, authController.register);
   typedFastify.post('/register', {
     schema: authRouteSchemas.register,
   }, authController.register);
@@ -46,25 +49,30 @@ export default async function authRoutes(fastify: FastifyInstance) {
   // Update user profile
   typedFastify.put('/profile', {
     schema: authRouteSchemas.updateProfile,
-    preHandler: authenticateToken,
   }, authController.updateProfile);
-  
+
   // Update user settings (theme, notifications, privacy)
   typedFastify.put('/settings', {
     schema: authRouteSchemas.updateSettings,
-    preHandler: authenticateToken,
+    preHandler: (request, reply, done) => {
+      return authenticateToken(request, reply, done);
+    },
   }, authController.updateSettings);
   
   // Change password
   typedFastify.post('/change-password', {
     schema: authRouteSchemas.changePassword,
-    preHandler: authenticateToken,
+    preHandler: (request, reply, done) => {
+      return authenticateToken(request, reply, done);
+    },
   }, authController.changePassword);
-  
+
   // Logout from current session
   typedFastify.post('/logout', {
     schema: authRouteSchemas.logout,
-    preHandler: authenticateToken,
+    preHandler: (request, reply, done) => {
+      return authenticateToken(request, reply, done);
+    },
   }, authController.logout);
   
   // Logout from all sessions

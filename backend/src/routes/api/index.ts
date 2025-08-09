@@ -1,7 +1,7 @@
-import { Router } from 'express';
+import type { FastifyInstance } from 'fastify';
 import authRoutes from './v1/auth.routes';
 
-const router = Router();
-router.use('/auth', authRoutes);
 
-export default router;
+export default function registerAllRoutes(fastify: FastifyInstance) {
+    fastify.register(authRoutes, { prefix: '/auth' });
+}

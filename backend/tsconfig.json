@@ -10,14 +10,18 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "baseUrl": ".",                       // REQUIRED for paths to work
+    "baseUrl": ".",                      
     "paths": {
       "@models/*": ["src/models/*"],
       "@controllers/*": ["src/controllers/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
-      "@prisma-sys-client": ["prisma/app/generated/prisma/client"]
+      "@prisma-sys-client": ["database/prisma/app/generated/prisma/client"],
+      "@chat-app/validators/*": ["../shared/src/validators/*"]
     }
   },
-  "include": ["src/**/*", "prisma/**/*"]
+  "include": ["src/**/*", "database/prisma/**/*"],
+   "references": [
+    { "path": "../shared" }
+  ]
 }

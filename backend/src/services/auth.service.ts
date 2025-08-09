@@ -291,7 +291,7 @@ class AuthService {
         userId,
         sessionToken: tokens.accessToken,
         refreshToken: tokens.refreshToken,
-        deviceInfo: sessionInfo.deviceInfo || null,
+        //deviceInfo: sessionInfo.deviceInfo || null,
         userAgent: sessionInfo.userAgent,
         ipAddress: sessionInfo.ipAddress,
         expiresAt: tokens.expiresAt,

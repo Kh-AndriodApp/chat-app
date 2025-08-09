@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { required } from 'zod/v4/core/util.cjs';
 
 // Device info schema
 export const deviceInfoSchema = z.object({
@@ -116,8 +117,8 @@ export const userResponseSchema = z.object({
   isActive: z.boolean(),
   isVerified: z.boolean(),
   themePreference: z.enum(['LIGHT', 'DARK', 'SYSTEM_DEFAULT']),
-  notificationSettings: z.record(z.any()),
-  privacySettings: z.record(z.any()),
+  notificationSettings: z.record(z.any(), z.string()),
+  privacySettings: z.record(z.any(), z.string()),
   createdAt: z.date(),
   updatedAt: z.date().nullable(),
 });
@@ -136,12 +137,13 @@ export const authResponseSchema = z.object({
 export const errorResponseSchema = z.object({
   success: z.boolean(),
   message: z.string(),
-  errors: z.record(z.any()).optional(),
+  errors: z.record(z.any(), z.string()).optional(),
 });
 
 // Route schemas for fastify-type-provider-zod
 export const authRouteSchemas = {
   register: {
+    required: ['email', 'password', 'name'],
     summary: 'Register a new user',
     description: 'Register a new user with email/phone and username',
     tags: ['Authentication'],
@@ -307,3 +309,39 @@ export const authRouteSchemas = {
     },
   },
 };
+
+export const addContactSchema = z.object({
+  type: z.enum(['email', 'phone']),
+  value: z.string().min(1, 'Value is required'),
+}).refine(
+  (data) => {
+    if (data.type === 'email') {
+      return emailSchema.safeParse(data.value).success;
+    }
+    if (data.type === 'phone') {
+      return phoneSchema.safeParse(data.value).success;
+    }
+    return false;
+  },
+  {
+    message: 'Invalid email or phone number format',
+    path: ['value'],
+  }
+);
+
+export const verifyContactSchema = z.object({
+  type: z.enum(['email', 'phone']),
+  verificationCode: z.string().length(6, 'Verification code must be 6 digits'),
+});
+
+export type RegisterRequest = z.infer<typeof registerSchema>;
+export type LoginRequest = z.infer<typeof loginSchema>;
+export type RefreshTokenRequest = z.infer<typeof refreshTokenSchema>;
+export type ChangePasswordRequest = z.infer<typeof changePasswordSchema>;
+export type PasswordResetRequestRequest = z.infer<typeof passwordResetRequestSchema>;
+export type PasswordResetRequest = z.infer<typeof passwordResetSchema>;
+export type LogoutRequest = z.infer<typeof logoutSchema>;
+export type UpdateProfileRequest = z.infer<typeof updateProfileSchema>;
+export type UpdateUserSettingsRequest = z.infer<typeof updateUserSettingsSchema>;
+export type VerifyContactRequest = z.infer<typeof verifyContactSchema>;
+export type AddContactRequest = z.infer<typeof addContactSchema>;
