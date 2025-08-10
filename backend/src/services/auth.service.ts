@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { prisma } from '../models/postgres';
+import { UserStatus } from '@chat-app/enums';
 import { User, UserSession } from '../models/postgres';
 import { DeviceInfoModel } from '../utils/types';
 import { InvalidCredentialsException, AccountDeactivatedException, InvalidOrExpiredRefreshTokenException, UserNotFoundException, InvalidCurrentPasswordException, InvalidOrExpiredResetTokenException, CredentialsAlreadyExistException } from '@utils/exceptions/auth';
@@ -102,11 +103,11 @@ class AuthService {
       ipAddress: credentials.ipAddress,
     });
 
-    await prisma.user.update({
+  await prisma.user.update({
       where: { id: user.id },
       data: {
         lastActivityDate: new Date(),
-        status: 'ONLINE',
+    status: UserStatus.ONLINE,
         updatedAt: new Date(),
         updatedBy: user.id,
       },

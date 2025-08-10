@@ -1,5 +1,5 @@
 import { MessageType, MessageDeliveryStatusType } from "@models/cassandra";
-import type { UserStatus, ThemePreference, DeviceType, RelationshipStatus, ChatRoomType, ChatRoomRole, VirusScanStatus } from "@prisma-sys-client";
+import type { UserStatus, ThemePreference, DeviceType, RelationshipStatus, ChatRoomType, ChatRoomRole, VirusScanStatus } from "@chat-app/enums";
 
 // JSON Models for JSONB fields
 export interface NotificationSettingsModel {

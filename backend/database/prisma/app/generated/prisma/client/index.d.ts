@@ -1663,6 +1663,8 @@ export namespace Prisma {
 
   export type UserAvgAggregateOutputType = {
     id: number | null
+    status: number | null
+    themePreference: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -1670,6 +1672,8 @@ export namespace Prisma {
 
   export type UserSumAggregateOutputType = {
     id: number | null
+    status: number | null
+    themePreference: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -1686,10 +1690,10 @@ export namespace Prisma {
     bio: string | null
     phoneNumber: string | null
     lastActivityDate: Date | null
-    status: $Enums.UserStatus | null
+    status: number | null
     isActive: boolean | null
     isVerified: boolean | null
-    themePreference: $Enums.ThemePreference | null
+    themePreference: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -1709,10 +1713,10 @@ export namespace Prisma {
     bio: string | null
     phoneNumber: string | null
     lastActivityDate: Date | null
-    status: $Enums.UserStatus | null
+    status: number | null
     isActive: boolean | null
     isVerified: boolean | null
-    themePreference: $Enums.ThemePreference | null
+    themePreference: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -1750,6 +1754,8 @@ export namespace Prisma {
 
   export type UserAvgAggregateInputType = {
     id?: true
+    status?: true
+    themePreference?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -1757,6 +1763,8 @@ export namespace Prisma {
 
   export type UserSumAggregateInputType = {
     id?: true
+    status?: true
+    themePreference?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -1931,10 +1939,10 @@ export namespace Prisma {
     bio: string | null
     phoneNumber: string | null
     lastActivityDate: Date
-    status: $Enums.UserStatus
+    status: number
     isActive: boolean
     isVerified: boolean
-    themePreference: $Enums.ThemePreference
+    themePreference: number
     notificationSettings: JsonValue
     privacySettings: JsonValue
     createdBy: number
@@ -2108,10 +2116,10 @@ export namespace Prisma {
       bio: string | null
       phoneNumber: string | null
       lastActivityDate: Date
-      status: $Enums.UserStatus
+      status: number
       isActive: boolean
       isVerified: boolean
-      themePreference: $Enums.ThemePreference
+      themePreference: number
       notificationSettings: Prisma.JsonValue
       privacySettings: Prisma.JsonValue
       createdBy: number
@@ -2560,10 +2568,10 @@ export namespace Prisma {
     readonly bio: FieldRef<"User", 'String'>
     readonly phoneNumber: FieldRef<"User", 'String'>
     readonly lastActivityDate: FieldRef<"User", 'DateTime'>
-    readonly status: FieldRef<"User", 'UserStatus'>
+    readonly status: FieldRef<"User", 'Int'>
     readonly isActive: FieldRef<"User", 'Boolean'>
     readonly isVerified: FieldRef<"User", 'Boolean'>
-    readonly themePreference: FieldRef<"User", 'ThemePreference'>
+    readonly themePreference: FieldRef<"User", 'Int'>
     readonly notificationSettings: FieldRef<"User", 'Json'>
     readonly privacySettings: FieldRef<"User", 'Json'>
     readonly createdBy: FieldRef<"User", 'Int'>
@@ -4416,6 +4424,7 @@ export namespace Prisma {
 
   export type UserDeviceAvgAggregateOutputType = {
     id: number | null
+    deviceType: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -4423,6 +4432,7 @@ export namespace Prisma {
 
   export type UserDeviceSumAggregateOutputType = {
     id: number | null
+    deviceType: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -4433,7 +4443,7 @@ export namespace Prisma {
     documentId: string | null
     userId: string | null
     deviceToken: string | null
-    deviceType: $Enums.DeviceType | null
+    deviceType: number | null
     deviceName: string | null
     appVersion: string | null
     osVersion: string | null
@@ -4452,7 +4462,7 @@ export namespace Prisma {
     documentId: string | null
     userId: string | null
     deviceToken: string | null
-    deviceType: $Enums.DeviceType | null
+    deviceType: number | null
     deviceName: string | null
     appVersion: string | null
     osVersion: string | null
@@ -4489,6 +4499,7 @@ export namespace Prisma {
 
   export type UserDeviceAvgAggregateInputType = {
     id?: true
+    deviceType?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -4496,6 +4507,7 @@ export namespace Prisma {
 
   export type UserDeviceSumAggregateInputType = {
     id?: true
+    deviceType?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -4650,7 +4662,7 @@ export namespace Prisma {
     documentId: string
     userId: string
     deviceToken: string
-    deviceType: $Enums.DeviceType
+    deviceType: number
     deviceName: string | null
     appVersion: string | null
     osVersion: string | null
@@ -4783,7 +4795,7 @@ export namespace Prisma {
       documentId: string
       userId: string
       deviceToken: string
-      deviceType: $Enums.DeviceType
+      deviceType: number
       deviceName: string | null
       appVersion: string | null
       osVersion: string | null
@@ -5223,7 +5235,7 @@ export namespace Prisma {
     readonly documentId: FieldRef<"UserDevice", 'String'>
     readonly userId: FieldRef<"UserDevice", 'String'>
     readonly deviceToken: FieldRef<"UserDevice", 'String'>
-    readonly deviceType: FieldRef<"UserDevice", 'DeviceType'>
+    readonly deviceType: FieldRef<"UserDevice", 'Int'>
     readonly deviceName: FieldRef<"UserDevice", 'String'>
     readonly appVersion: FieldRef<"UserDevice", 'String'>
     readonly osVersion: FieldRef<"UserDevice", 'String'>
@@ -5663,6 +5675,7 @@ export namespace Prisma {
 
   export type UserRelationshipAvgAggregateOutputType = {
     id: number | null
+    status: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -5670,6 +5683,7 @@ export namespace Prisma {
 
   export type UserRelationshipSumAggregateOutputType = {
     id: number | null
+    status: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -5680,7 +5694,7 @@ export namespace Prisma {
     documentId: string | null
     requesterId: string | null
     addresseeId: string | null
-    status: $Enums.RelationshipStatus | null
+    status: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -5694,7 +5708,7 @@ export namespace Prisma {
     documentId: string | null
     requesterId: string | null
     addresseeId: string | null
-    status: $Enums.RelationshipStatus | null
+    status: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -5721,6 +5735,7 @@ export namespace Prisma {
 
   export type UserRelationshipAvgAggregateInputType = {
     id?: true
+    status?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -5728,6 +5743,7 @@ export namespace Prisma {
 
   export type UserRelationshipSumAggregateInputType = {
     id?: true
+    status?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -5867,7 +5883,7 @@ export namespace Prisma {
     documentId: string
     requesterId: string
     addresseeId: string
-    status: $Enums.RelationshipStatus
+    status: number
     createdBy: number
     updatedBy: number
     deletedBy: number
@@ -5982,7 +5998,7 @@ export namespace Prisma {
       documentId: string
       requesterId: string
       addresseeId: string
-      status: $Enums.RelationshipStatus
+      status: number
       createdBy: number
       updatedBy: number
       deletedBy: number
@@ -6418,7 +6434,7 @@ export namespace Prisma {
     readonly documentId: FieldRef<"UserRelationship", 'String'>
     readonly requesterId: FieldRef<"UserRelationship", 'String'>
     readonly addresseeId: FieldRef<"UserRelationship", 'String'>
-    readonly status: FieldRef<"UserRelationship", 'RelationshipStatus'>
+    readonly status: FieldRef<"UserRelationship", 'Int'>
     readonly createdBy: FieldRef<"UserRelationship", 'Int'>
     readonly updatedBy: FieldRef<"UserRelationship", 'Int'>
     readonly deletedBy: FieldRef<"UserRelationship", 'Int'>
@@ -6853,6 +6869,7 @@ export namespace Prisma {
 
   export type ChatRoomAvgAggregateOutputType = {
     id: number | null
+    type: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -6860,6 +6877,7 @@ export namespace Prisma {
 
   export type ChatRoomSumAggregateOutputType = {
     id: bigint | null
+    type: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -6869,7 +6887,7 @@ export namespace Prisma {
     id: bigint | null
     documentId: string | null
     name: string | null
-    type: $Enums.ChatRoomType | null
+    type: number | null
     description: string | null
     lastMessageDate: Date | null
     createdBy: number | null
@@ -6884,7 +6902,7 @@ export namespace Prisma {
     id: bigint | null
     documentId: string | null
     name: string | null
-    type: $Enums.ChatRoomType | null
+    type: number | null
     description: string | null
     lastMessageDate: Date | null
     createdBy: number | null
@@ -6914,6 +6932,7 @@ export namespace Prisma {
 
   export type ChatRoomAvgAggregateInputType = {
     id?: true
+    type?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -6921,6 +6940,7 @@ export namespace Prisma {
 
   export type ChatRoomSumAggregateInputType = {
     id?: true
+    type?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -7062,7 +7082,7 @@ export namespace Prisma {
     id: bigint
     documentId: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description: string | null
     lastMessageDate: Date
     createdBy: number
@@ -7180,7 +7200,7 @@ export namespace Prisma {
       id: bigint
       documentId: string
       name: string
-      type: $Enums.ChatRoomType
+      type: number
       description: string | null
       lastMessageDate: Date
       createdBy: number
@@ -7617,7 +7637,7 @@ export namespace Prisma {
     readonly id: FieldRef<"ChatRoom", 'BigInt'>
     readonly documentId: FieldRef<"ChatRoom", 'String'>
     readonly name: FieldRef<"ChatRoom", 'String'>
-    readonly type: FieldRef<"ChatRoom", 'ChatRoomType'>
+    readonly type: FieldRef<"ChatRoom", 'Int'>
     readonly description: FieldRef<"ChatRoom", 'String'>
     readonly lastMessageDate: FieldRef<"ChatRoom", 'DateTime'>
     readonly createdBy: FieldRef<"ChatRoom", 'Int'>
@@ -8078,6 +8098,7 @@ export namespace Prisma {
 
   export type ChatRoomMemberAvgAggregateOutputType = {
     id: number | null
+    role: number | null
     unreadMessagesCount: number | null
     createdBy: number | null
     updatedBy: number | null
@@ -8086,6 +8107,7 @@ export namespace Prisma {
 
   export type ChatRoomMemberSumAggregateOutputType = {
     id: bigint | null
+    role: number | null
     unreadMessagesCount: number | null
     createdBy: number | null
     updatedBy: number | null
@@ -8101,7 +8123,7 @@ export namespace Prisma {
     isArchived: boolean | null
     isBanned: boolean | null
     lastReadMessageId: string | null
-    role: $Enums.ChatRoomRole | null
+    role: number | null
     leftAt: Date | null
     unreadMessagesCount: number | null
     createdBy: number | null
@@ -8121,7 +8143,7 @@ export namespace Prisma {
     isArchived: boolean | null
     isBanned: boolean | null
     lastReadMessageId: string | null
-    role: $Enums.ChatRoomRole | null
+    role: number | null
     leftAt: Date | null
     unreadMessagesCount: number | null
     createdBy: number | null
@@ -8157,6 +8179,7 @@ export namespace Prisma {
 
   export type ChatRoomMemberAvgAggregateInputType = {
     id?: true
+    role?: true
     unreadMessagesCount?: true
     createdBy?: true
     updatedBy?: true
@@ -8165,6 +8188,7 @@ export namespace Prisma {
 
   export type ChatRoomMemberSumAggregateInputType = {
     id?: true
+    role?: true
     unreadMessagesCount?: true
     createdBy?: true
     updatedBy?: true
@@ -8328,7 +8352,7 @@ export namespace Prisma {
     isArchived: boolean
     isBanned: boolean
     lastReadMessageId: string
-    role: $Enums.ChatRoomRole
+    role: number
     leftAt: Date | null
     unreadMessagesCount: number
     permissions: JsonValue
@@ -8478,7 +8502,7 @@ export namespace Prisma {
       isArchived: boolean
       isBanned: boolean
       lastReadMessageId: string
-      role: $Enums.ChatRoomRole
+      role: number
       leftAt: Date | null
       unreadMessagesCount: number
       permissions: Prisma.JsonValue
@@ -8921,7 +8945,7 @@ export namespace Prisma {
     readonly isArchived: FieldRef<"ChatRoomMember", 'Boolean'>
     readonly isBanned: FieldRef<"ChatRoomMember", 'Boolean'>
     readonly lastReadMessageId: FieldRef<"ChatRoomMember", 'String'>
-    readonly role: FieldRef<"ChatRoomMember", 'ChatRoomRole'>
+    readonly role: FieldRef<"ChatRoomMember", 'Int'>
     readonly leftAt: FieldRef<"ChatRoomMember", 'DateTime'>
     readonly unreadMessagesCount: FieldRef<"ChatRoomMember", 'Int'>
     readonly permissions: FieldRef<"ChatRoomMember", 'Json'>
@@ -9360,6 +9384,7 @@ export namespace Prisma {
   export type AttachmentAvgAggregateOutputType = {
     id: number | null
     fileSize: number | null
+    virusScanStatus: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -9368,6 +9393,7 @@ export namespace Prisma {
   export type AttachmentSumAggregateOutputType = {
     id: number | null
     fileSize: bigint | null
+    virusScanStatus: number | null
     createdBy: number | null
     updatedBy: number | null
     deletedBy: number | null
@@ -9384,7 +9410,7 @@ export namespace Prisma {
     thumbnailPath: string | null
     uploadedBy: string | null
     isPublic: boolean | null
-    virusScanStatus: $Enums.VirusScanStatus | null
+    virusScanStatus: number | null
     expiresAt: Date | null
     createdBy: number | null
     updatedBy: number | null
@@ -9405,7 +9431,7 @@ export namespace Prisma {
     thumbnailPath: string | null
     uploadedBy: string | null
     isPublic: boolean | null
-    virusScanStatus: $Enums.VirusScanStatus | null
+    virusScanStatus: number | null
     expiresAt: Date | null
     createdBy: number | null
     updatedBy: number | null
@@ -9443,6 +9469,7 @@ export namespace Prisma {
   export type AttachmentAvgAggregateInputType = {
     id?: true
     fileSize?: true
+    virusScanStatus?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -9451,6 +9478,7 @@ export namespace Prisma {
   export type AttachmentSumAggregateInputType = {
     id?: true
     fileSize?: true
+    virusScanStatus?: true
     createdBy?: true
     updatedBy?: true
     deletedBy?: true
@@ -9620,7 +9648,7 @@ export namespace Prisma {
     uploadedBy: string
     isPublic: boolean
     metadata: JsonValue
-    virusScanStatus: $Enums.VirusScanStatus
+    virusScanStatus: number
     virusScanResult: JsonValue | null
     expiresAt: Date | null
     createdBy: number
@@ -9773,7 +9801,7 @@ export namespace Prisma {
       uploadedBy: string
       isPublic: boolean
       metadata: Prisma.JsonValue
-      virusScanStatus: $Enums.VirusScanStatus
+      virusScanStatus: number
       virusScanResult: Prisma.JsonValue | null
       expiresAt: Date | null
       createdBy: number
@@ -10217,7 +10245,7 @@ export namespace Prisma {
     readonly uploadedBy: FieldRef<"Attachment", 'String'>
     readonly isPublic: FieldRef<"Attachment", 'Boolean'>
     readonly metadata: FieldRef<"Attachment", 'Json'>
-    readonly virusScanStatus: FieldRef<"Attachment", 'VirusScanStatus'>
+    readonly virusScanStatus: FieldRef<"Attachment", 'Int'>
     readonly virusScanResult: FieldRef<"Attachment", 'Json'>
     readonly expiresAt: FieldRef<"Attachment", 'DateTime'>
     readonly createdBy: FieldRef<"Attachment", 'Int'>
@@ -10908,37 +10936,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'UserStatus'
-   */
-  export type EnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserStatus'>
-    
-
-
-  /**
-   * Reference to a field of type 'UserStatus[]'
-   */
-  export type ListEnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserStatus[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
-   * Reference to a field of type 'ThemePreference'
-   */
-  export type EnumThemePreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ThemePreference'>
-    
-
-
-  /**
-   * Reference to a field of type 'ThemePreference[]'
-   */
-  export type ListEnumThemePreferenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ThemePreference[]'>
     
 
 
@@ -10957,34 +10957,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DeviceType'
-   */
-  export type EnumDeviceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DeviceType'>
-    
-
-
-  /**
-   * Reference to a field of type 'DeviceType[]'
-   */
-  export type ListEnumDeviceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DeviceType[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'RelationshipStatus'
-   */
-  export type EnumRelationshipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RelationshipStatus'>
-    
-
-
-  /**
-   * Reference to a field of type 'RelationshipStatus[]'
-   */
-  export type ListEnumRelationshipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RelationshipStatus[]'>
-    
-
-
-  /**
    * Reference to a field of type 'BigInt'
    */
   export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
@@ -10995,48 +10967,6 @@ export namespace Prisma {
    * Reference to a field of type 'BigInt[]'
    */
   export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'ChatRoomType'
-   */
-  export type EnumChatRoomTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChatRoomType'>
-    
-
-
-  /**
-   * Reference to a field of type 'ChatRoomType[]'
-   */
-  export type ListEnumChatRoomTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChatRoomType[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'ChatRoomRole'
-   */
-  export type EnumChatRoomRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChatRoomRole'>
-    
-
-
-  /**
-   * Reference to a field of type 'ChatRoomRole[]'
-   */
-  export type ListEnumChatRoomRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ChatRoomRole[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'VirusScanStatus'
-   */
-  export type EnumVirusScanStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VirusScanStatus'>
-    
-
-
-  /**
-   * Reference to a field of type 'VirusScanStatus[]'
-   */
-  export type ListEnumVirusScanStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VirusScanStatus[]'>
     
 
 
@@ -11071,10 +11001,10 @@ export namespace Prisma {
     bio?: StringNullableFilter<"User"> | string | null
     phoneNumber?: StringNullableFilter<"User"> | string | null
     lastActivityDate?: DateTimeFilter<"User"> | Date | string
-    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
+    status?: IntFilter<"User"> | number
     isActive?: BoolFilter<"User"> | boolean
     isVerified?: BoolFilter<"User"> | boolean
-    themePreference?: EnumThemePreferenceFilter<"User"> | $Enums.ThemePreference
+    themePreference?: IntFilter<"User"> | number
     notificationSettings?: JsonFilter<"User">
     privacySettings?: JsonFilter<"User">
     createdBy?: IntFilter<"User"> | number
@@ -11138,10 +11068,10 @@ export namespace Prisma {
     bio?: StringNullableFilter<"User"> | string | null
     phoneNumber?: StringNullableFilter<"User"> | string | null
     lastActivityDate?: DateTimeFilter<"User"> | Date | string
-    status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
+    status?: IntFilter<"User"> | number
     isActive?: BoolFilter<"User"> | boolean
     isVerified?: BoolFilter<"User"> | boolean
-    themePreference?: EnumThemePreferenceFilter<"User"> | $Enums.ThemePreference
+    themePreference?: IntFilter<"User"> | number
     notificationSettings?: JsonFilter<"User">
     privacySettings?: JsonFilter<"User">
     createdBy?: IntFilter<"User"> | number
@@ -11203,10 +11133,10 @@ export namespace Prisma {
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
     phoneNumber?: StringNullableWithAggregatesFilter<"User"> | string | null
     lastActivityDate?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
+    status?: IntWithAggregatesFilter<"User"> | number
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     isVerified?: BoolWithAggregatesFilter<"User"> | boolean
-    themePreference?: EnumThemePreferenceWithAggregatesFilter<"User"> | $Enums.ThemePreference
+    themePreference?: IntWithAggregatesFilter<"User"> | number
     notificationSettings?: JsonWithAggregatesFilter<"User">
     privacySettings?: JsonWithAggregatesFilter<"User">
     createdBy?: IntWithAggregatesFilter<"User"> | number
@@ -11342,7 +11272,7 @@ export namespace Prisma {
     documentId?: UuidFilter<"UserDevice"> | string
     userId?: UuidFilter<"UserDevice"> | string
     deviceToken?: StringFilter<"UserDevice"> | string
-    deviceType?: EnumDeviceTypeFilter<"UserDevice"> | $Enums.DeviceType
+    deviceType?: IntFilter<"UserDevice"> | number
     deviceName?: StringNullableFilter<"UserDevice"> | string | null
     appVersion?: StringNullableFilter<"UserDevice"> | string | null
     osVersion?: StringNullableFilter<"UserDevice"> | string | null
@@ -11385,7 +11315,7 @@ export namespace Prisma {
     NOT?: UserDeviceWhereInput | UserDeviceWhereInput[]
     userId?: UuidFilter<"UserDevice"> | string
     deviceToken?: StringFilter<"UserDevice"> | string
-    deviceType?: EnumDeviceTypeFilter<"UserDevice"> | $Enums.DeviceType
+    deviceType?: IntFilter<"UserDevice"> | number
     deviceName?: StringNullableFilter<"UserDevice"> | string | null
     appVersion?: StringNullableFilter<"UserDevice"> | string | null
     osVersion?: StringNullableFilter<"UserDevice"> | string | null
@@ -11432,7 +11362,7 @@ export namespace Prisma {
     documentId?: UuidWithAggregatesFilter<"UserDevice"> | string
     userId?: UuidWithAggregatesFilter<"UserDevice"> | string
     deviceToken?: StringWithAggregatesFilter<"UserDevice"> | string
-    deviceType?: EnumDeviceTypeWithAggregatesFilter<"UserDevice"> | $Enums.DeviceType
+    deviceType?: IntWithAggregatesFilter<"UserDevice"> | number
     deviceName?: StringNullableWithAggregatesFilter<"UserDevice"> | string | null
     appVersion?: StringNullableWithAggregatesFilter<"UserDevice"> | string | null
     osVersion?: StringNullableWithAggregatesFilter<"UserDevice"> | string | null
@@ -11454,7 +11384,7 @@ export namespace Prisma {
     documentId?: UuidFilter<"UserRelationship"> | string
     requesterId?: UuidFilter<"UserRelationship"> | string
     addresseeId?: UuidFilter<"UserRelationship"> | string
-    status?: EnumRelationshipStatusFilter<"UserRelationship"> | $Enums.RelationshipStatus
+    status?: IntFilter<"UserRelationship"> | number
     createdBy?: IntFilter<"UserRelationship"> | number
     updatedBy?: IntFilter<"UserRelationship"> | number
     deletedBy?: IntFilter<"UserRelationship"> | number
@@ -11490,7 +11420,7 @@ export namespace Prisma {
     NOT?: UserRelationshipWhereInput | UserRelationshipWhereInput[]
     requesterId?: UuidFilter<"UserRelationship"> | string
     addresseeId?: UuidFilter<"UserRelationship"> | string
-    status?: EnumRelationshipStatusFilter<"UserRelationship"> | $Enums.RelationshipStatus
+    status?: IntFilter<"UserRelationship"> | number
     createdBy?: IntFilter<"UserRelationship"> | number
     updatedBy?: IntFilter<"UserRelationship"> | number
     deletedBy?: IntFilter<"UserRelationship"> | number
@@ -11528,7 +11458,7 @@ export namespace Prisma {
     documentId?: UuidWithAggregatesFilter<"UserRelationship"> | string
     requesterId?: UuidWithAggregatesFilter<"UserRelationship"> | string
     addresseeId?: UuidWithAggregatesFilter<"UserRelationship"> | string
-    status?: EnumRelationshipStatusWithAggregatesFilter<"UserRelationship"> | $Enums.RelationshipStatus
+    status?: IntWithAggregatesFilter<"UserRelationship"> | number
     createdBy?: IntWithAggregatesFilter<"UserRelationship"> | number
     updatedBy?: IntWithAggregatesFilter<"UserRelationship"> | number
     deletedBy?: IntWithAggregatesFilter<"UserRelationship"> | number
@@ -11544,7 +11474,7 @@ export namespace Prisma {
     id?: BigIntFilter<"ChatRoom"> | bigint | number
     documentId?: UuidFilter<"ChatRoom"> | string
     name?: StringFilter<"ChatRoom"> | string
-    type?: EnumChatRoomTypeFilter<"ChatRoom"> | $Enums.ChatRoomType
+    type?: IntFilter<"ChatRoom"> | number
     description?: StringNullableFilter<"ChatRoom"> | string | null
     lastMessageDate?: DateTimeFilter<"ChatRoom"> | Date | string
     createdBy?: IntFilter<"ChatRoom"> | number
@@ -11581,7 +11511,7 @@ export namespace Prisma {
     OR?: ChatRoomWhereInput[]
     NOT?: ChatRoomWhereInput | ChatRoomWhereInput[]
     name?: StringFilter<"ChatRoom"> | string
-    type?: EnumChatRoomTypeFilter<"ChatRoom"> | $Enums.ChatRoomType
+    type?: IntFilter<"ChatRoom"> | number
     description?: StringNullableFilter<"ChatRoom"> | string | null
     lastMessageDate?: DateTimeFilter<"ChatRoom"> | Date | string
     createdBy?: IntFilter<"ChatRoom"> | number
@@ -11621,7 +11551,7 @@ export namespace Prisma {
     id?: BigIntWithAggregatesFilter<"ChatRoom"> | bigint | number
     documentId?: UuidWithAggregatesFilter<"ChatRoom"> | string
     name?: StringWithAggregatesFilter<"ChatRoom"> | string
-    type?: EnumChatRoomTypeWithAggregatesFilter<"ChatRoom"> | $Enums.ChatRoomType
+    type?: IntWithAggregatesFilter<"ChatRoom"> | number
     description?: StringNullableWithAggregatesFilter<"ChatRoom"> | string | null
     lastMessageDate?: DateTimeWithAggregatesFilter<"ChatRoom"> | Date | string
     createdBy?: IntWithAggregatesFilter<"ChatRoom"> | number
@@ -11644,7 +11574,7 @@ export namespace Prisma {
     isArchived?: BoolFilter<"ChatRoomMember"> | boolean
     isBanned?: BoolFilter<"ChatRoomMember"> | boolean
     lastReadMessageId?: UuidFilter<"ChatRoomMember"> | string
-    role?: EnumChatRoomRoleFilter<"ChatRoomMember"> | $Enums.ChatRoomRole
+    role?: IntFilter<"ChatRoomMember"> | number
     leftAt?: DateTimeNullableFilter<"ChatRoomMember"> | Date | string | null
     unreadMessagesCount?: IntFilter<"ChatRoomMember"> | number
     permissions?: JsonFilter<"ChatRoomMember">
@@ -11694,7 +11624,7 @@ export namespace Prisma {
     isArchived?: BoolFilter<"ChatRoomMember"> | boolean
     isBanned?: BoolFilter<"ChatRoomMember"> | boolean
     lastReadMessageId?: UuidFilter<"ChatRoomMember"> | string
-    role?: EnumChatRoomRoleFilter<"ChatRoomMember"> | $Enums.ChatRoomRole
+    role?: IntFilter<"ChatRoomMember"> | number
     leftAt?: DateTimeNullableFilter<"ChatRoomMember"> | Date | string | null
     unreadMessagesCount?: IntFilter<"ChatRoomMember"> | number
     permissions?: JsonFilter<"ChatRoomMember">
@@ -11746,7 +11676,7 @@ export namespace Prisma {
     isArchived?: BoolWithAggregatesFilter<"ChatRoomMember"> | boolean
     isBanned?: BoolWithAggregatesFilter<"ChatRoomMember"> | boolean
     lastReadMessageId?: UuidWithAggregatesFilter<"ChatRoomMember"> | string
-    role?: EnumChatRoomRoleWithAggregatesFilter<"ChatRoomMember"> | $Enums.ChatRoomRole
+    role?: IntWithAggregatesFilter<"ChatRoomMember"> | number
     leftAt?: DateTimeNullableWithAggregatesFilter<"ChatRoomMember"> | Date | string | null
     unreadMessagesCount?: IntWithAggregatesFilter<"ChatRoomMember"> | number
     permissions?: JsonWithAggregatesFilter<"ChatRoomMember">
@@ -11773,7 +11703,7 @@ export namespace Prisma {
     uploadedBy?: UuidFilter<"Attachment"> | string
     isPublic?: BoolFilter<"Attachment"> | boolean
     metadata?: JsonFilter<"Attachment">
-    virusScanStatus?: EnumVirusScanStatusFilter<"Attachment"> | $Enums.VirusScanStatus
+    virusScanStatus?: IntFilter<"Attachment"> | number
     virusScanResult?: JsonNullableFilter<"Attachment">
     expiresAt?: DateTimeNullableFilter<"Attachment"> | Date | string | null
     createdBy?: IntFilter<"Attachment"> | number
@@ -11824,7 +11754,7 @@ export namespace Prisma {
     uploadedBy?: UuidFilter<"Attachment"> | string
     isPublic?: BoolFilter<"Attachment"> | boolean
     metadata?: JsonFilter<"Attachment">
-    virusScanStatus?: EnumVirusScanStatusFilter<"Attachment"> | $Enums.VirusScanStatus
+    virusScanStatus?: IntFilter<"Attachment"> | number
     virusScanResult?: JsonNullableFilter<"Attachment">
     expiresAt?: DateTimeNullableFilter<"Attachment"> | Date | string | null
     createdBy?: IntFilter<"Attachment"> | number
@@ -11879,7 +11809,7 @@ export namespace Prisma {
     uploadedBy?: UuidWithAggregatesFilter<"Attachment"> | string
     isPublic?: BoolWithAggregatesFilter<"Attachment"> | boolean
     metadata?: JsonWithAggregatesFilter<"Attachment">
-    virusScanStatus?: EnumVirusScanStatusWithAggregatesFilter<"Attachment"> | $Enums.VirusScanStatus
+    virusScanStatus?: IntWithAggregatesFilter<"Attachment"> | number
     virusScanResult?: JsonNullableWithAggregatesFilter<"Attachment">
     expiresAt?: DateTimeNullableWithAggregatesFilter<"Attachment"> | Date | string | null
     createdBy?: IntWithAggregatesFilter<"Attachment"> | number
@@ -11900,10 +11830,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -11932,10 +11862,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -11963,10 +11893,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -11995,10 +11925,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12027,10 +11957,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -12051,10 +11981,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12076,10 +12006,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12229,7 +12159,7 @@ export namespace Prisma {
   export type UserDeviceCreateInput = {
     documentId?: string
     deviceToken: string
-    deviceType: $Enums.DeviceType
+    deviceType: number
     deviceName?: string | null
     appVersion?: string | null
     osVersion?: string | null
@@ -12249,7 +12179,7 @@ export namespace Prisma {
     documentId?: string
     userId: string
     deviceToken: string
-    deviceType: $Enums.DeviceType
+    deviceType: number
     deviceName?: string | null
     appVersion?: string | null
     osVersion?: string | null
@@ -12266,7 +12196,7 @@ export namespace Prisma {
   export type UserDeviceUpdateInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     deviceToken?: StringFieldUpdateOperationsInput | string
-    deviceType?: EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+    deviceType?: IntFieldUpdateOperationsInput | number
     deviceName?: NullableStringFieldUpdateOperationsInput | string | null
     appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     osVersion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12286,7 +12216,7 @@ export namespace Prisma {
     documentId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     deviceToken?: StringFieldUpdateOperationsInput | string
-    deviceType?: EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+    deviceType?: IntFieldUpdateOperationsInput | number
     deviceName?: NullableStringFieldUpdateOperationsInput | string | null
     appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     osVersion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12305,7 +12235,7 @@ export namespace Prisma {
     documentId?: string
     userId: string
     deviceToken: string
-    deviceType: $Enums.DeviceType
+    deviceType: number
     deviceName?: string | null
     appVersion?: string | null
     osVersion?: string | null
@@ -12322,7 +12252,7 @@ export namespace Prisma {
   export type UserDeviceUpdateManyMutationInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     deviceToken?: StringFieldUpdateOperationsInput | string
-    deviceType?: EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+    deviceType?: IntFieldUpdateOperationsInput | number
     deviceName?: NullableStringFieldUpdateOperationsInput | string | null
     appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     osVersion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12341,7 +12271,7 @@ export namespace Prisma {
     documentId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     deviceToken?: StringFieldUpdateOperationsInput | string
-    deviceType?: EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+    deviceType?: IntFieldUpdateOperationsInput | number
     deviceName?: NullableStringFieldUpdateOperationsInput | string | null
     appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     osVersion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12357,7 +12287,7 @@ export namespace Prisma {
 
   export type UserRelationshipCreateInput = {
     documentId?: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -12373,7 +12303,7 @@ export namespace Prisma {
     documentId?: string
     requesterId: string
     addresseeId: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -12384,7 +12314,7 @@ export namespace Prisma {
 
   export type UserRelationshipUpdateInput = {
     documentId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -12400,7 +12330,7 @@ export namespace Prisma {
     documentId?: StringFieldUpdateOperationsInput | string
     requesterId?: StringFieldUpdateOperationsInput | string
     addresseeId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -12414,7 +12344,7 @@ export namespace Prisma {
     documentId?: string
     requesterId: string
     addresseeId: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -12425,7 +12355,7 @@ export namespace Prisma {
 
   export type UserRelationshipUpdateManyMutationInput = {
     documentId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -12439,7 +12369,7 @@ export namespace Prisma {
     documentId?: StringFieldUpdateOperationsInput | string
     requesterId?: StringFieldUpdateOperationsInput | string
     addresseeId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -12452,7 +12382,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     updatedBy: number
@@ -12468,7 +12398,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     createdBy: number
@@ -12484,7 +12414,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedBy?: IntFieldUpdateOperationsInput | number
@@ -12500,7 +12430,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12516,7 +12446,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     createdBy: number
@@ -12531,7 +12461,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedBy?: IntFieldUpdateOperationsInput | number
@@ -12545,7 +12475,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12563,7 +12493,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -12586,7 +12516,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -12605,7 +12535,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -12628,7 +12558,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -12649,7 +12579,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -12668,7 +12598,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -12689,7 +12619,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -12711,7 +12641,7 @@ export namespace Prisma {
     thumbnailPath?: string | null
     isPublic?: boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: $Enums.VirusScanStatus
+    virusScanStatus?: number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: Date | string | null
     createdBy: number
@@ -12735,7 +12665,7 @@ export namespace Prisma {
     uploadedBy: string
     isPublic?: boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: $Enums.VirusScanStatus
+    virusScanStatus?: number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: Date | string | null
     createdBy: number
@@ -12756,7 +12686,7 @@ export namespace Prisma {
     thumbnailPath?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: EnumVirusScanStatusFieldUpdateOperationsInput | $Enums.VirusScanStatus
+    virusScanStatus?: IntFieldUpdateOperationsInput | number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12780,7 +12710,7 @@ export namespace Prisma {
     uploadedBy?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: EnumVirusScanStatusFieldUpdateOperationsInput | $Enums.VirusScanStatus
+    virusScanStatus?: IntFieldUpdateOperationsInput | number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12803,7 +12733,7 @@ export namespace Prisma {
     uploadedBy: string
     isPublic?: boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: $Enums.VirusScanStatus
+    virusScanStatus?: number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: Date | string | null
     createdBy: number
@@ -12824,7 +12754,7 @@ export namespace Prisma {
     thumbnailPath?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: EnumVirusScanStatusFieldUpdateOperationsInput | $Enums.VirusScanStatus
+    virusScanStatus?: IntFieldUpdateOperationsInput | number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12847,7 +12777,7 @@ export namespace Prisma {
     uploadedBy?: StringFieldUpdateOperationsInput | string
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: EnumVirusScanStatusFieldUpdateOperationsInput | $Enums.VirusScanStatus
+    virusScanStatus?: IntFieldUpdateOperationsInput | number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -12922,23 +12852,9 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type EnumUserStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
-  }
-
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type EnumThemePreferenceFilter<$PrismaModel = never> = {
-    equals?: $Enums.ThemePreference | EnumThemePreferenceFieldRefInput<$PrismaModel>
-    in?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    not?: NestedEnumThemePreferenceFilter<$PrismaModel> | $Enums.ThemePreference
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -13067,6 +12983,8 @@ export namespace Prisma {
 
   export type UserAvgOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
+    themePreference?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
@@ -13120,6 +13038,8 @@ export namespace Prisma {
 
   export type UserSumOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
+    themePreference?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
@@ -13206,32 +13126,12 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type EnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserStatusFilter<$PrismaModel>
-    _max?: NestedEnumUserStatusFilter<$PrismaModel>
-  }
-
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type EnumThemePreferenceWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ThemePreference | EnumThemePreferenceFieldRefInput<$PrismaModel>
-    in?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    not?: NestedEnumThemePreferenceWithAggregatesFilter<$PrismaModel> | $Enums.ThemePreference
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumThemePreferenceFilter<$PrismaModel>
-    _max?: NestedEnumThemePreferenceFilter<$PrismaModel>
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -13400,13 +13300,6 @@ export namespace Prisma {
     _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
-  export type EnumDeviceTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.DeviceType | EnumDeviceTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumDeviceTypeFilter<$PrismaModel> | $Enums.DeviceType
-  }
-
   export type UserDeviceCountOrderByAggregateInput = {
     id?: SortOrder
     documentId?: SortOrder
@@ -13428,6 +13321,7 @@ export namespace Prisma {
 
   export type UserDeviceAvgOrderByAggregateInput = {
     id?: SortOrder
+    deviceType?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
@@ -13473,26 +13367,10 @@ export namespace Prisma {
 
   export type UserDeviceSumOrderByAggregateInput = {
     id?: SortOrder
+    deviceType?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
-  }
-
-  export type EnumDeviceTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.DeviceType | EnumDeviceTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumDeviceTypeWithAggregatesFilter<$PrismaModel> | $Enums.DeviceType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDeviceTypeFilter<$PrismaModel>
-    _max?: NestedEnumDeviceTypeFilter<$PrismaModel>
-  }
-
-  export type EnumRelationshipStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.RelationshipStatus | EnumRelationshipStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumRelationshipStatusFilter<$PrismaModel> | $Enums.RelationshipStatus
   }
 
   export type UserRelationshipRequesterIdAddresseeIdCompoundUniqueInput = {
@@ -13516,6 +13394,7 @@ export namespace Prisma {
 
   export type UserRelationshipAvgOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
@@ -13551,19 +13430,10 @@ export namespace Prisma {
 
   export type UserRelationshipSumOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
-  }
-
-  export type EnumRelationshipStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.RelationshipStatus | EnumRelationshipStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumRelationshipStatusWithAggregatesFilter<$PrismaModel> | $Enums.RelationshipStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRelationshipStatusFilter<$PrismaModel>
-    _max?: NestedEnumRelationshipStatusFilter<$PrismaModel>
   }
 
   export type BigIntFilter<$PrismaModel = never> = {
@@ -13575,13 +13445,6 @@ export namespace Prisma {
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type EnumChatRoomTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomType | EnumChatRoomTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomTypeFilter<$PrismaModel> | $Enums.ChatRoomType
   }
 
   export type ChatRoomCountOrderByAggregateInput = {
@@ -13601,6 +13464,7 @@ export namespace Prisma {
 
   export type ChatRoomAvgOrderByAggregateInput = {
     id?: SortOrder
+    type?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
@@ -13638,6 +13502,7 @@ export namespace Prisma {
 
   export type ChatRoomSumOrderByAggregateInput = {
     id?: SortOrder
+    type?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
@@ -13657,23 +13522,6 @@ export namespace Prisma {
     _sum?: NestedBigIntFilter<$PrismaModel>
     _min?: NestedBigIntFilter<$PrismaModel>
     _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type EnumChatRoomTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomType | EnumChatRoomTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomTypeWithAggregatesFilter<$PrismaModel> | $Enums.ChatRoomType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumChatRoomTypeFilter<$PrismaModel>
-    _max?: NestedEnumChatRoomTypeFilter<$PrismaModel>
-  }
-
-  export type EnumChatRoomRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomRole | EnumChatRoomRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomRoleFilter<$PrismaModel> | $Enums.ChatRoomRole
   }
 
   export type ChatRoomScalarRelationFilter = {
@@ -13709,6 +13557,7 @@ export namespace Prisma {
 
   export type ChatRoomMemberAvgOrderByAggregateInput = {
     id?: SortOrder
+    role?: SortOrder
     unreadMessagesCount?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
@@ -13757,27 +13606,11 @@ export namespace Prisma {
 
   export type ChatRoomMemberSumOrderByAggregateInput = {
     id?: SortOrder
+    role?: SortOrder
     unreadMessagesCount?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
-  }
-
-  export type EnumChatRoomRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomRole | EnumChatRoomRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomRoleWithAggregatesFilter<$PrismaModel> | $Enums.ChatRoomRole
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumChatRoomRoleFilter<$PrismaModel>
-    _max?: NestedEnumChatRoomRoleFilter<$PrismaModel>
-  }
-
-  export type EnumVirusScanStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.VirusScanStatus | EnumVirusScanStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumVirusScanStatusFilter<$PrismaModel> | $Enums.VirusScanStatus
   }
 
   export type AttachmentCountOrderByAggregateInput = {
@@ -13806,6 +13639,7 @@ export namespace Prisma {
   export type AttachmentAvgOrderByAggregateInput = {
     id?: SortOrder
     fileSize?: SortOrder
+    virusScanStatus?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
@@ -13856,19 +13690,10 @@ export namespace Prisma {
   export type AttachmentSumOrderByAggregateInput = {
     id?: SortOrder
     fileSize?: SortOrder
+    virusScanStatus?: SortOrder
     createdBy?: SortOrder
     updatedBy?: SortOrder
     deletedBy?: SortOrder
-  }
-
-  export type EnumVirusScanStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.VirusScanStatus | EnumVirusScanStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumVirusScanStatusWithAggregatesFilter<$PrismaModel> | $Enums.VirusScanStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumVirusScanStatusFilter<$PrismaModel>
-    _max?: NestedEnumVirusScanStatusFilter<$PrismaModel>
   }
 
   export type UserSessionCreateNestedManyWithoutUserInput = {
@@ -13981,24 +13806,16 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type EnumUserStatusFieldUpdateOperationsInput = {
-    set?: $Enums.UserStatus
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
-  export type EnumThemePreferenceFieldUpdateOperationsInput = {
-    set?: $Enums.ThemePreference
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -14221,10 +14038,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type EnumDeviceTypeFieldUpdateOperationsInput = {
-    set?: $Enums.DeviceType
-  }
-
   export type UserUpdateOneRequiredWithoutDevicesNestedInput = {
     create?: XOR<UserCreateWithoutDevicesInput, UserUncheckedCreateWithoutDevicesInput>
     connectOrCreate?: UserCreateOrConnectWithoutDevicesInput
@@ -14243,10 +14056,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutReceivedRelationshipsInput, UserUncheckedCreateWithoutReceivedRelationshipsInput>
     connectOrCreate?: UserCreateOrConnectWithoutReceivedRelationshipsInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type EnumRelationshipStatusFieldUpdateOperationsInput = {
-    set?: $Enums.RelationshipStatus
   }
 
   export type UserUpdateOneRequiredWithoutRequestedRelationshipsNestedInput = {
@@ -14291,10 +14100,6 @@ export namespace Prisma {
     decrement?: bigint | number
     multiply?: bigint | number
     divide?: bigint | number
-  }
-
-  export type EnumChatRoomTypeFieldUpdateOperationsInput = {
-    set?: $Enums.ChatRoomType
   }
 
   export type ChatRoomMemberUpdateManyWithoutChatRoomNestedInput = {
@@ -14345,10 +14150,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type EnumChatRoomRoleFieldUpdateOperationsInput = {
-    set?: $Enums.ChatRoomRole
-  }
-
   export type ChatRoomUpdateOneRequiredWithoutMembersNestedInput = {
     create?: XOR<ChatRoomCreateWithoutMembersInput, ChatRoomUncheckedCreateWithoutMembersInput>
     connectOrCreate?: ChatRoomCreateOrConnectWithoutMembersInput
@@ -14369,10 +14170,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutUploadedFilesInput, UserUncheckedCreateWithoutUploadedFilesInput>
     connectOrCreate?: UserCreateOrConnectWithoutUploadedFilesInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type EnumVirusScanStatusFieldUpdateOperationsInput = {
-    set?: $Enums.VirusScanStatus
   }
 
   export type UserUpdateOneRequiredWithoutUploadedFilesNestedInput = {
@@ -14444,23 +14241,9 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedEnumUserStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
-  }
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedEnumThemePreferenceFilter<$PrismaModel = never> = {
-    equals?: $Enums.ThemePreference | EnumThemePreferenceFieldRefInput<$PrismaModel>
-    in?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    not?: NestedEnumThemePreferenceFilter<$PrismaModel> | $Enums.ThemePreference
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -14574,32 +14357,12 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedEnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumUserStatusFilter<$PrismaModel>
-    _max?: NestedEnumUserStatusFilter<$PrismaModel>
-  }
-
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type NestedEnumThemePreferenceWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ThemePreference | EnumThemePreferenceFieldRefInput<$PrismaModel>
-    in?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ThemePreference[] | ListEnumThemePreferenceFieldRefInput<$PrismaModel>
-    not?: NestedEnumThemePreferenceWithAggregatesFilter<$PrismaModel> | $Enums.ThemePreference
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumThemePreferenceFilter<$PrismaModel>
-    _max?: NestedEnumThemePreferenceFilter<$PrismaModel>
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -14662,40 +14425,6 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type NestedEnumDeviceTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.DeviceType | EnumDeviceTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumDeviceTypeFilter<$PrismaModel> | $Enums.DeviceType
-  }
-
-  export type NestedEnumDeviceTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.DeviceType | EnumDeviceTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.DeviceType[] | ListEnumDeviceTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumDeviceTypeWithAggregatesFilter<$PrismaModel> | $Enums.DeviceType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDeviceTypeFilter<$PrismaModel>
-    _max?: NestedEnumDeviceTypeFilter<$PrismaModel>
-  }
-
-  export type NestedEnumRelationshipStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.RelationshipStatus | EnumRelationshipStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumRelationshipStatusFilter<$PrismaModel> | $Enums.RelationshipStatus
-  }
-
-  export type NestedEnumRelationshipStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.RelationshipStatus | EnumRelationshipStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.RelationshipStatus[] | ListEnumRelationshipStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumRelationshipStatusWithAggregatesFilter<$PrismaModel> | $Enums.RelationshipStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumRelationshipStatusFilter<$PrismaModel>
-    _max?: NestedEnumRelationshipStatusFilter<$PrismaModel>
-  }
-
   export type NestedBigIntFilter<$PrismaModel = never> = {
     equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
@@ -14705,13 +14434,6 @@ export namespace Prisma {
     gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
     not?: NestedBigIntFilter<$PrismaModel> | bigint | number
-  }
-
-  export type NestedEnumChatRoomTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomType | EnumChatRoomTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomTypeFilter<$PrismaModel> | $Enums.ChatRoomType
   }
 
   export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -14728,50 +14450,6 @@ export namespace Prisma {
     _sum?: NestedBigIntFilter<$PrismaModel>
     _min?: NestedBigIntFilter<$PrismaModel>
     _max?: NestedBigIntFilter<$PrismaModel>
-  }
-
-  export type NestedEnumChatRoomTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomType | EnumChatRoomTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomType[] | ListEnumChatRoomTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomTypeWithAggregatesFilter<$PrismaModel> | $Enums.ChatRoomType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumChatRoomTypeFilter<$PrismaModel>
-    _max?: NestedEnumChatRoomTypeFilter<$PrismaModel>
-  }
-
-  export type NestedEnumChatRoomRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomRole | EnumChatRoomRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomRoleFilter<$PrismaModel> | $Enums.ChatRoomRole
-  }
-
-  export type NestedEnumChatRoomRoleWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ChatRoomRole | EnumChatRoomRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ChatRoomRole[] | ListEnumChatRoomRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumChatRoomRoleWithAggregatesFilter<$PrismaModel> | $Enums.ChatRoomRole
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumChatRoomRoleFilter<$PrismaModel>
-    _max?: NestedEnumChatRoomRoleFilter<$PrismaModel>
-  }
-
-  export type NestedEnumVirusScanStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.VirusScanStatus | EnumVirusScanStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumVirusScanStatusFilter<$PrismaModel> | $Enums.VirusScanStatus
-  }
-
-  export type NestedEnumVirusScanStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.VirusScanStatus | EnumVirusScanStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.VirusScanStatus[] | ListEnumVirusScanStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumVirusScanStatusWithAggregatesFilter<$PrismaModel> | $Enums.VirusScanStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumVirusScanStatusFilter<$PrismaModel>
-    _max?: NestedEnumVirusScanStatusFilter<$PrismaModel>
   }
 
   export type UserSessionCreateWithoutUserInput = {
@@ -14828,7 +14506,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -14849,7 +14527,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -14875,7 +14553,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     updatedBy: number
@@ -14890,7 +14568,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     updatedBy: number
@@ -14913,7 +14591,7 @@ export namespace Prisma {
 
   export type UserRelationshipCreateWithoutRequesterInput = {
     documentId?: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -14927,7 +14605,7 @@ export namespace Prisma {
     id?: number
     documentId?: string
     addresseeId: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -14948,7 +14626,7 @@ export namespace Prisma {
 
   export type UserRelationshipCreateWithoutAddresseeInput = {
     documentId?: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -14962,7 +14640,7 @@ export namespace Prisma {
     id?: number
     documentId?: string
     requesterId: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -14984,7 +14662,7 @@ export namespace Prisma {
   export type UserDeviceCreateWithoutUserInput = {
     documentId?: string
     deviceToken: string
-    deviceType: $Enums.DeviceType
+    deviceType: number
     deviceName?: string | null
     appVersion?: string | null
     osVersion?: string | null
@@ -15002,7 +14680,7 @@ export namespace Prisma {
     id?: number
     documentId?: string
     deviceToken: string
-    deviceType: $Enums.DeviceType
+    deviceType: number
     deviceName?: string | null
     appVersion?: string | null
     osVersion?: string | null
@@ -15036,7 +14714,7 @@ export namespace Prisma {
     thumbnailPath?: string | null
     isPublic?: boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: $Enums.VirusScanStatus
+    virusScanStatus?: number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: Date | string | null
     createdBy: number
@@ -15058,7 +14736,7 @@ export namespace Prisma {
     thumbnailPath?: string | null
     isPublic?: boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: $Enums.VirusScanStatus
+    virusScanStatus?: number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: Date | string | null
     createdBy: number
@@ -15146,7 +14824,7 @@ export namespace Prisma {
     isArchived?: BoolFilter<"ChatRoomMember"> | boolean
     isBanned?: BoolFilter<"ChatRoomMember"> | boolean
     lastReadMessageId?: UuidFilter<"ChatRoomMember"> | string
-    role?: EnumChatRoomRoleFilter<"ChatRoomMember"> | $Enums.ChatRoomRole
+    role?: IntFilter<"ChatRoomMember"> | number
     leftAt?: DateTimeNullableFilter<"ChatRoomMember"> | Date | string | null
     unreadMessagesCount?: IntFilter<"ChatRoomMember"> | number
     permissions?: JsonFilter<"ChatRoomMember">
@@ -15181,7 +14859,7 @@ export namespace Prisma {
     id?: BigIntFilter<"ChatRoom"> | bigint | number
     documentId?: UuidFilter<"ChatRoom"> | string
     name?: StringFilter<"ChatRoom"> | string
-    type?: EnumChatRoomTypeFilter<"ChatRoom"> | $Enums.ChatRoomType
+    type?: IntFilter<"ChatRoom"> | number
     description?: StringNullableFilter<"ChatRoom"> | string | null
     lastMessageDate?: DateTimeFilter<"ChatRoom"> | Date | string
     createdBy?: IntFilter<"ChatRoom"> | number
@@ -15216,7 +14894,7 @@ export namespace Prisma {
     documentId?: UuidFilter<"UserRelationship"> | string
     requesterId?: UuidFilter<"UserRelationship"> | string
     addresseeId?: UuidFilter<"UserRelationship"> | string
-    status?: EnumRelationshipStatusFilter<"UserRelationship"> | $Enums.RelationshipStatus
+    status?: IntFilter<"UserRelationship"> | number
     createdBy?: IntFilter<"UserRelationship"> | number
     updatedBy?: IntFilter<"UserRelationship"> | number
     deletedBy?: IntFilter<"UserRelationship"> | number
@@ -15265,7 +14943,7 @@ export namespace Prisma {
     documentId?: UuidFilter<"UserDevice"> | string
     userId?: UuidFilter<"UserDevice"> | string
     deviceToken?: StringFilter<"UserDevice"> | string
-    deviceType?: EnumDeviceTypeFilter<"UserDevice"> | $Enums.DeviceType
+    deviceType?: IntFilter<"UserDevice"> | number
     deviceName?: StringNullableFilter<"UserDevice"> | string | null
     appVersion?: StringNullableFilter<"UserDevice"> | string | null
     osVersion?: StringNullableFilter<"UserDevice"> | string | null
@@ -15310,7 +14988,7 @@ export namespace Prisma {
     uploadedBy?: UuidFilter<"Attachment"> | string
     isPublic?: BoolFilter<"Attachment"> | boolean
     metadata?: JsonFilter<"Attachment">
-    virusScanStatus?: EnumVirusScanStatusFilter<"Attachment"> | $Enums.VirusScanStatus
+    virusScanStatus?: IntFilter<"Attachment"> | number
     virusScanResult?: JsonNullableFilter<"Attachment">
     expiresAt?: DateTimeNullableFilter<"Attachment"> | Date | string | null
     createdBy?: IntFilter<"Attachment"> | number
@@ -15331,10 +15009,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15362,10 +15040,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15408,10 +15086,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15439,10 +15117,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15469,10 +15147,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15500,10 +15178,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15546,10 +15224,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15577,10 +15255,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15607,10 +15285,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15638,10 +15316,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15673,10 +15351,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15704,10 +15382,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15750,10 +15428,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15781,10 +15459,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15822,10 +15500,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15853,10 +15531,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -15880,7 +15558,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -15901,7 +15579,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -15933,10 +15611,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -15964,10 +15642,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -16026,10 +15704,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16057,10 +15735,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16081,7 +15759,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     updatedBy: number
@@ -16096,7 +15774,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     createdBy: number
@@ -16122,10 +15800,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -16153,10 +15831,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -16193,7 +15871,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedBy?: IntFieldUpdateOperationsInput | number
@@ -16208,7 +15886,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16240,10 +15918,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16271,10 +15949,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16301,10 +15979,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -16332,10 +16010,10 @@ export namespace Prisma {
     bio?: string | null
     phoneNumber?: string | null
     lastActivityDate?: Date | string
-    status?: $Enums.UserStatus
+    status?: number
     isActive?: boolean
     isVerified?: boolean
-    themePreference?: $Enums.ThemePreference
+    themePreference?: number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy: number
@@ -16378,10 +16056,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16409,10 +16087,10 @@ export namespace Prisma {
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     lastActivityDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+    status?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     isVerified?: BoolFieldUpdateOperationsInput | boolean
-    themePreference?: EnumThemePreferenceFieldUpdateOperationsInput | $Enums.ThemePreference
+    themePreference?: IntFieldUpdateOperationsInput | number
     notificationSettings?: JsonNullValueInput | InputJsonValue
     privacySettings?: JsonNullValueInput | InputJsonValue
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16456,7 +16134,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -16472,7 +16150,7 @@ export namespace Prisma {
     id?: bigint | number
     documentId?: string
     name: string
-    type: $Enums.ChatRoomType
+    type: number
     description?: string | null
     lastMessageDate?: Date | string
     updatedBy: number
@@ -16486,7 +16164,7 @@ export namespace Prisma {
     id?: number
     documentId?: string
     addresseeId: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -16499,7 +16177,7 @@ export namespace Prisma {
     id?: number
     documentId?: string
     requesterId: string
-    status?: $Enums.RelationshipStatus
+    status?: number
     createdBy: number
     updatedBy: number
     deletedBy?: number
@@ -16512,7 +16190,7 @@ export namespace Prisma {
     id?: number
     documentId?: string
     deviceToken: string
-    deviceType: $Enums.DeviceType
+    deviceType: number
     deviceName?: string | null
     appVersion?: string | null
     osVersion?: string | null
@@ -16537,7 +16215,7 @@ export namespace Prisma {
     thumbnailPath?: string | null
     isPublic?: boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: $Enums.VirusScanStatus
+    virusScanStatus?: number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: Date | string | null
     createdBy: number
@@ -16611,7 +16289,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -16632,7 +16310,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -16652,7 +16330,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -16668,7 +16346,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedBy?: IntFieldUpdateOperationsInput | number
@@ -16683,7 +16361,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedBy?: IntFieldUpdateOperationsInput | number
@@ -16698,7 +16376,7 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     documentId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    type?: EnumChatRoomTypeFieldUpdateOperationsInput | $Enums.ChatRoomType
+    type?: IntFieldUpdateOperationsInput | number
     description?: NullableStringFieldUpdateOperationsInput | string | null
     lastMessageDate?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedBy?: IntFieldUpdateOperationsInput | number
@@ -16710,7 +16388,7 @@ export namespace Prisma {
 
   export type UserRelationshipUpdateWithoutRequesterInput = {
     documentId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -16724,7 +16402,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     addresseeId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -16737,7 +16415,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     addresseeId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -16748,7 +16426,7 @@ export namespace Prisma {
 
   export type UserRelationshipUpdateWithoutAddresseeInput = {
     documentId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -16762,7 +16440,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     requesterId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -16775,7 +16453,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     requesterId?: StringFieldUpdateOperationsInput | string
-    status?: EnumRelationshipStatusFieldUpdateOperationsInput | $Enums.RelationshipStatus
+    status?: IntFieldUpdateOperationsInput | number
     createdBy?: IntFieldUpdateOperationsInput | number
     updatedBy?: IntFieldUpdateOperationsInput | number
     deletedBy?: IntFieldUpdateOperationsInput | number
@@ -16787,7 +16465,7 @@ export namespace Prisma {
   export type UserDeviceUpdateWithoutUserInput = {
     documentId?: StringFieldUpdateOperationsInput | string
     deviceToken?: StringFieldUpdateOperationsInput | string
-    deviceType?: EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+    deviceType?: IntFieldUpdateOperationsInput | number
     deviceName?: NullableStringFieldUpdateOperationsInput | string | null
     appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     osVersion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16805,7 +16483,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     deviceToken?: StringFieldUpdateOperationsInput | string
-    deviceType?: EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+    deviceType?: IntFieldUpdateOperationsInput | number
     deviceName?: NullableStringFieldUpdateOperationsInput | string | null
     appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     osVersion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16823,7 +16501,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     documentId?: StringFieldUpdateOperationsInput | string
     deviceToken?: StringFieldUpdateOperationsInput | string
-    deviceType?: EnumDeviceTypeFieldUpdateOperationsInput | $Enums.DeviceType
+    deviceType?: IntFieldUpdateOperationsInput | number
     deviceName?: NullableStringFieldUpdateOperationsInput | string | null
     appVersion?: NullableStringFieldUpdateOperationsInput | string | null
     osVersion?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16847,7 +16525,7 @@ export namespace Prisma {
     thumbnailPath?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: EnumVirusScanStatusFieldUpdateOperationsInput | $Enums.VirusScanStatus
+    virusScanStatus?: IntFieldUpdateOperationsInput | number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16869,7 +16547,7 @@ export namespace Prisma {
     thumbnailPath?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: EnumVirusScanStatusFieldUpdateOperationsInput | $Enums.VirusScanStatus
+    virusScanStatus?: IntFieldUpdateOperationsInput | number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16891,7 +16569,7 @@ export namespace Prisma {
     thumbnailPath?: NullableStringFieldUpdateOperationsInput | string | null
     isPublic?: BoolFieldUpdateOperationsInput | boolean
     metadata?: JsonNullValueInput | InputJsonValue
-    virusScanStatus?: EnumVirusScanStatusFieldUpdateOperationsInput | $Enums.VirusScanStatus
+    virusScanStatus?: IntFieldUpdateOperationsInput | number
     virusScanResult?: NullableJsonNullValueInput | InputJsonValue
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdBy?: IntFieldUpdateOperationsInput | number
@@ -16910,7 +16588,7 @@ export namespace Prisma {
     isArchived?: boolean
     isBanned?: boolean
     lastReadMessageId?: string
-    role?: $Enums.ChatRoomRole
+    role?: number
     leftAt?: Date | string | null
     unreadMessagesCount?: number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -16929,7 +16607,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -16950,7 +16628,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue
@@ -16970,7 +16648,7 @@ export namespace Prisma {
     isArchived?: BoolFieldUpdateOperationsInput | boolean
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     lastReadMessageId?: StringFieldUpdateOperationsInput | string
-    role?: EnumChatRoomRoleFieldUpdateOperationsInput | $Enums.ChatRoomRole
+    role?: IntFieldUpdateOperationsInput | number
     leftAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     unreadMessagesCount?: IntFieldUpdateOperationsInput | number
     permissions?: JsonNullValueInput | InputJsonValue

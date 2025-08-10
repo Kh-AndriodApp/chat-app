@@ -72,10 +72,12 @@ model User {
   bio                   String?            @db.VarChar(500)
   phoneNumber           String?             @db.VarChar(20)
   lastActivityDate      DateTime           @default(now())
-  status                UserStatus         @default(ONLINE)
+  // status: 0=OFFLINE, 1=ONLINE, 2=BUSY, 3=AWAY, 4=DO_NOT_DISTURB
+  status                Int                @default(1) @db.SmallInt
   isActive              Boolean            @default(true)
   isVerified            Boolean            @default(false)
-  themePreference       ThemePreference    @default(LIGHT)
+  // themePreference: 1=LIGHT, 2=DARK, 3=SYSTEM_DEFAULT
+  themePreference       Int                @default(1) @db.SmallInt
   notificationSettings  Json               @default("{}")
   privacySettings       Json               @default("{}")
   
@@ -131,7 +133,8 @@ model UserDevice {
   documentId    String      @unique @default(uuid()) @db.Uuid
   userId        String      @db.Uuid
   deviceToken   String      @db.VarChar(500)
-  deviceType    DeviceType
+  // deviceType: 1=IOS, 2=ANDROID, 3=WEB, 4=DESKTOP
+  deviceType    Int         @db.SmallInt
   deviceName    String?     @db.VarChar(100)
   appVersion    String?     @db.VarChar(20)
   osVersion     String?     @db.VarChar(50)
@@ -157,7 +160,8 @@ model UserRelationship {
   documentId   String             @unique @default(uuid()) @db.Uuid
   requesterId  String             @db.Uuid
   addresseeId  String             @db.Uuid
-  status       RelationshipStatus @default(PENDING)
+  // relationship status: 1=PENDING, 2=ACCEPTED, 3=REJECTED, 4=BLOCKED
+  status       Int                @default(1) @db.SmallInt
   
   // Audit fields
   createdBy    Int
@@ -179,7 +183,8 @@ model ChatRoom {
   id              BigInt           @id @default(autoincrement()) @db.BigInt
   documentId      String           @unique @default(uuid()) @db.Uuid
   name            String           @db.VarChar(100)
-  type            ChatRoomType
+  // chat room type: 1=PRIVATE, 2=GROUP, 3=CHANNEL, 4=PUBLIC, 5=DIRECT_MESSAGE, 6=ANNOUNCEMENT
+  type            Int              @db.SmallInt
   description     String?          @db.VarChar(500)
   lastMessageDate DateTime         @default(now())
   
@@ -207,7 +212,8 @@ model ChatRoomMember {
   isArchived          Boolean       @default(false)
   isBanned            Boolean       @default(false)
   lastReadMessageId   String        @default("00000000-0000-0000-0000-000000000000") @db.Uuid
-  role                ChatRoomRole  @default(USER)
+  // member role: 1=USER, 2=MODERATOR, 3=ADMIN, 4=SUPER_ADMIN, 5=GUEST
+  role                Int           @default(1) @db.SmallInt
   leftAt              DateTime?
   unreadMessagesCount Int           @default(0)
   permissions         Json          @default("{}")
@@ -240,7 +246,8 @@ model Attachment {
   uploadedBy       String            @db.Uuid
   isPublic         Boolean           @default(false)
   metadata         Json              @default("{}")
-  virusScanStatus  VirusScanStatus   @default(PENDING)
+  // virus scan status: 1=PENDING, 2=CLEAN, 3=INFECTED, 4=ERROR
+  virusScanStatus  Int               @default(1) @db.SmallInt
   virusScanResult  Json?
   expiresAt        DateTime?
   

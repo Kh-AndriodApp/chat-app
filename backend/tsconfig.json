@@ -17,7 +17,9 @@
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
       "@prisma-sys-client": ["database/prisma/app/generated/prisma/client"],
-      "@chat-app/validators/*": ["../shared/src/validators/*"]
+  "@chat-app/validators/*": ["../shared/src/validators/*"],
+  "@chat-app/enums": ["../shared/src/enums/index.ts"],
+  "@chat-app/enums/*": ["../shared/src/enums/*"]
     }
   },
   "include": ["src/**/*", "database/prisma/**/*"],

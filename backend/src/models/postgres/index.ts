@@ -10,13 +10,6 @@ export type {
   ChatRoom,
   ChatRoomMember,
   Attachment,
-  UserStatus,
-  DeviceType,
-  ThemePreference,
-  ChatRoomType,
-  ChatRoomRole,
-  RelationshipStatus,
-  VirusScanStatus,
 } from '@prisma-sys-client';
 
 export async function connectPostgres(): Promise<void> {

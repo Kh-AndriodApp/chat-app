@@ -62,22 +62,24 @@ enum VirusScanStatus {
 }
 
 model User {
-  id                   Int             @id @default(autoincrement())
-  documentId           String          @unique @default(uuid()) @db.Uuid
-  name                 String          @db.VarChar(100)
-  email                String          @unique @db.VarChar(255)
-  username             String          @unique @db.VarChar(50)
-  password             String          @db.VarChar(255)
-  profilePictureUrl    String?         @db.VarChar(200)
-  bio                  String?         @db.VarChar(500)
-  phoneNumber          String          @db.VarChar(15)
-  lastActivityDate     DateTime        @default(now())
-  status               UserStatus      @default(ONLINE)
-  isActive             Boolean         @default(true)
-  isVerified           Boolean         @default(false)
-  themePreference      ThemePreference @default(LIGHT)
-  notificationSettings Json            @default("{}")
-  privacySettings      Json            @default("{}")
+  id                   Int      @id @default(autoincrement())
+  documentId           String   @unique @default(uuid()) @db.Uuid
+  name                 String   @db.VarChar(100)
+  email                String?  @unique @db.VarChar(255)
+  username             String   @unique @db.VarChar(50)
+  password             String   @db.VarChar(255)
+  profilePictureUrl    String?  @db.VarChar(200)
+  bio                  String?  @db.VarChar(500)
+  phoneNumber          String?  @db.VarChar(20)
+  lastActivityDate     DateTime @default(now())
+  // status: 0=OFFLINE, 1=ONLINE, 2=BUSY, 3=AWAY, 4=DO_NOT_DISTURB
+  status               Int      @default(1) @db.SmallInt
+  isActive             Boolean  @default(true)
+  isVerified           Boolean  @default(false)
+  // themePreference: 1=LIGHT, 2=DARK, 3=SYSTEM_DEFAULT
+  themePreference      Int      @default(1) @db.SmallInt
+  notificationSettings Json     @default("{}")
+  privacySettings      Json     @default("{}")
 
   // Audit fields
   createdBy Int
@@ -127,16 +129,17 @@ model UserSession {
 }
 
 model UserDevice {
-  id          Int        @id @default(autoincrement())
-  documentId  String     @unique @default(uuid()) @db.Uuid
-  userId      String     @db.Uuid
-  deviceToken String     @db.VarChar(500)
-  deviceType  DeviceType
-  deviceName  String?    @db.VarChar(100)
-  appVersion  String?    @db.VarChar(20)
-  osVersion   String?    @db.VarChar(50)
-  isActive    Boolean    @default(true)
-  lastUsedAt  DateTime   @default(now())
+  id          Int      @id @default(autoincrement())
+  documentId  String   @unique @default(uuid()) @db.Uuid
+  userId      String   @db.Uuid
+  deviceToken String   @db.VarChar(500)
+  // deviceType: 1=IOS, 2=ANDROID, 3=WEB, 4=DESKTOP
+  deviceType  Int      @db.SmallInt
+  deviceName  String?  @db.VarChar(100)
+  appVersion  String?  @db.VarChar(20)
+  osVersion   String?  @db.VarChar(50)
+  isActive    Boolean  @default(true)
+  lastUsedAt  DateTime @default(now())
 
   // Audit fields
   createdBy Int
@@ -153,11 +156,12 @@ model UserDevice {
 }
 
 model UserRelationship {
-  id          Int                @id @default(autoincrement())
-  documentId  String             @unique @default(uuid()) @db.Uuid
-  requesterId String             @db.Uuid
-  addresseeId String             @db.Uuid
-  status      RelationshipStatus @default(PENDING)
+  id          Int    @id @default(autoincrement())
+  documentId  String @unique @default(uuid()) @db.Uuid
+  requesterId String @db.Uuid
+  addresseeId String @db.Uuid
+  // relationship status: 1=PENDING, 2=ACCEPTED, 3=REJECTED, 4=BLOCKED
+  status      Int    @default(1) @db.SmallInt
 
   // Audit fields
   createdBy Int
@@ -176,12 +180,13 @@ model UserRelationship {
 }
 
 model ChatRoom {
-  id              BigInt       @id @default(autoincrement()) @db.BigInt
-  documentId      String       @unique @default(uuid()) @db.Uuid
-  name            String       @db.VarChar(100)
-  type            ChatRoomType
-  description     String?      @db.VarChar(500)
-  lastMessageDate DateTime     @default(now())
+  id              BigInt   @id @default(autoincrement()) @db.BigInt
+  documentId      String   @unique @default(uuid()) @db.Uuid
+  name            String   @db.VarChar(100)
+  // chat room type: 1=PRIVATE, 2=GROUP, 3=CHANNEL, 4=PUBLIC, 5=DIRECT_MESSAGE, 6=ANNOUNCEMENT
+  type            Int      @db.SmallInt
+  description     String?  @db.VarChar(500)
+  lastMessageDate DateTime @default(now())
 
   // Audit fields
   createdBy Int
@@ -199,18 +204,19 @@ model ChatRoom {
 }
 
 model ChatRoomMember {
-  id                  BigInt       @id @default(autoincrement()) @db.BigInt
-  documentId          String       @unique @default(uuid()) @db.Uuid
-  chatRoomId          String       @db.Uuid
-  userId              String       @db.Uuid
-  isMuted             Boolean      @default(false)
-  isArchived          Boolean      @default(false)
-  isBanned            Boolean      @default(false)
-  lastReadMessageId   String       @default("00000000-0000-0000-0000-000000000000") @db.Uuid
-  role                ChatRoomRole @default(USER)
+  id                  BigInt    @id @default(autoincrement()) @db.BigInt
+  documentId          String    @unique @default(uuid()) @db.Uuid
+  chatRoomId          String    @db.Uuid
+  userId              String    @db.Uuid
+  isMuted             Boolean   @default(false)
+  isArchived          Boolean   @default(false)
+  isBanned            Boolean   @default(false)
+  lastReadMessageId   String    @default("00000000-0000-0000-0000-000000000000") @db.Uuid
+  // member role: 1=USER, 2=MODERATOR, 3=ADMIN, 4=SUPER_ADMIN, 5=GUEST
+  role                Int       @default(1) @db.SmallInt
   leftAt              DateTime?
-  unreadMessagesCount Int          @default(0)
-  permissions         Json         @default("{}")
+  unreadMessagesCount Int       @default(0)
+  permissions         Json      @default("{}")
 
   // Audit fields
   createdBy Int
@@ -229,18 +235,19 @@ model ChatRoomMember {
 }
 
 model Attachment {
-  id              Int             @id @default(autoincrement())
-  documentId      String          @unique @default(uuid()) @db.Uuid
-  originalName    String          @db.VarChar(255)
-  fileName        String          @db.VarChar(255)
-  mimeType        String          @db.VarChar(100)
-  fileSize        BigInt          @db.BigInt
+  id              Int       @id @default(autoincrement())
+  documentId      String    @unique @default(uuid()) @db.Uuid
+  originalName    String    @db.VarChar(255)
+  fileName        String    @db.VarChar(255)
+  mimeType        String    @db.VarChar(100)
+  fileSize        BigInt    @db.BigInt
   filePath        String
   thumbnailPath   String?
-  uploadedBy      String          @db.Uuid
-  isPublic        Boolean         @default(false)
-  metadata        Json            @default("{}")
-  virusScanStatus VirusScanStatus @default(PENDING)
+  uploadedBy      String    @db.Uuid
+  isPublic        Boolean   @default(false)
+  metadata        Json      @default("{}")
+  // virus scan status: 1=PENDING, 2=CLEAN, 3=INFECTED, 4=ERROR
+  virusScanStatus Int       @default(1) @db.SmallInt
   virusScanResult Json?
   expiresAt       DateTime?
 

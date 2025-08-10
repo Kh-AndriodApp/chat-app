@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ThemePreference } from '../../enums';
 
 export const updateProfileSchema = z.object({
   name: z.string().min(1, 'name-required').max(100, 'name-max-100').optional(),
@@ -25,7 +26,7 @@ export const privacySettingsSchema = z.object({
 });
 
 export const updateUserSettingsSchema = z.object({
-  themePreference: z.enum(['LIGHT', 'DARK', 'SYSTEM_DEFAULT']).optional(),
+  themePreference: z.nativeEnum(ThemePreference).optional(),
   notificationSettings: notificationSettingsSchema.optional(),
   privacySettings: privacySettingsSchema.optional(),
 });

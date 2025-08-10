@@ -1,53 +1,53 @@
 export enum UserStatus {
-  OFFLINE = 'OFFLINE',
-  ONLINE = 'ONLINE', 
-  BUSY = 'BUSY',
-  AWAY = 'AWAY',
-  DO_NOT_DISTURB = 'DO_NOT_DISTURB',
+  OFFLINE = 0,
+  ONLINE = 1,
+  BUSY = 2,
+  AWAY = 3,
+  DO_NOT_DISTURB = 4,
 }
 
 export enum DeviceType {
-  IOS = 'IOS',
-  ANDROID = 'ANDROID',
-  WEB = 'WEB',
-  DESKTOP = 'DESKTOP',
+  IOS = 1,
+  ANDROID = 2,
+  WEB = 3,
+  DESKTOP = 4,
 }
 
 export enum ThemePreference {
-  LIGHT = 'LIGHT',
-  DARK = 'DARK',
-  SYSTEM_DEFAULT = 'SYSTEM_DEFAULT',
+  LIGHT = 1,
+  DARK = 2,
+  SYSTEM_DEFAULT = 3,
 }
 
 export enum ChatRoomType {
-  PRIVATE = 'PRIVATE',
-  GROUP = 'GROUP',
-  CHANNEL = 'CHANNEL',
-  PUBLIC = 'PUBLIC',
-  DIRECT_MESSAGE = 'DIRECT_MESSAGE',
-  ANNOUNCEMENT = 'ANNOUNCEMENT',
+  PRIVATE = 1,
+  GROUP = 2,
+  CHANNEL = 3,
+  PUBLIC = 4,
+  DIRECT_MESSAGE = 5,
+  ANNOUNCEMENT = 6,
 }
 
 export enum ChatRoomRole {
-  USER = 'USER',
-  MODERATOR = 'MODERATOR',
-  ADMIN = 'ADMIN',
-  SUPER_ADMIN = 'SUPER_ADMIN',
-  GUEST = 'GUEST',
+  USER = 1,
+  MODERATOR = 2,
+  ADMIN = 3,
+  SUPER_ADMIN = 4,
+  GUEST = 5,
 }
 
 export enum RelationshipStatus {
-  PENDING = 'PENDING',
-  ACCEPTED = 'ACCEPTED',
-  REJECTED = 'REJECTED',
-  BLOCKED = 'BLOCKED',
+  PENDING = 1,
+  ACCEPTED = 2,
+  REJECTED = 3,
+  BLOCKED = 4,
 }
 
 export enum VirusScanStatus {
-  PENDING = 'PENDING',
-  CLEAN = 'CLEAN',
-  INFECTED = 'INFECTED',
-  ERROR = 'ERROR',
+  PENDING = 1,
+  CLEAN = 2,
+  INFECTED = 3,
+  ERROR = 4,
 }
 
 export enum MessageType {

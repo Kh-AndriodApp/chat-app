@@ -286,57 +286,7 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.UserStatus = exports.$Enums.UserStatus = {
-  OFFLINE: 'OFFLINE',
-  ONLINE: 'ONLINE',
-  BUSY: 'BUSY',
-  AWAY: 'AWAY',
-  DO_NOT_DISTURB: 'DO_NOT_DISTURB'
-};
 
-exports.ThemePreference = exports.$Enums.ThemePreference = {
-  LIGHT: 'LIGHT',
-  DARK: 'DARK',
-  SYSTEM_DEFAULT: 'SYSTEM_DEFAULT'
-};
-
-exports.DeviceType = exports.$Enums.DeviceType = {
-  IOS: 'IOS',
-  ANDROID: 'ANDROID',
-  WEB: 'WEB',
-  DESKTOP: 'DESKTOP'
-};
-
-exports.RelationshipStatus = exports.$Enums.RelationshipStatus = {
-  PENDING: 'PENDING',
-  ACCEPTED: 'ACCEPTED',
-  REJECTED: 'REJECTED',
-  BLOCKED: 'BLOCKED'
-};
-
-exports.ChatRoomType = exports.$Enums.ChatRoomType = {
-  PRIVATE: 'PRIVATE',
-  GROUP: 'GROUP',
-  CHANNEL: 'CHANNEL',
-  PUBLIC: 'PUBLIC',
-  DIRECT_MESSAGE: 'DIRECT_MESSAGE',
-  ANNOUNCEMENT: 'ANNOUNCEMENT'
-};
-
-exports.ChatRoomRole = exports.$Enums.ChatRoomRole = {
-  USER: 'USER',
-  MODERATOR: 'MODERATOR',
-  ADMIN: 'ADMIN',
-  SUPER_ADMIN: 'SUPER_ADMIN',
-  GUEST: 'GUEST'
-};
-
-exports.VirusScanStatus = exports.$Enums.VirusScanStatus = {
-  PENDING: 'PENDING',
-  CLEAN: 'CLEAN',
-  INFECTED: 'INFECTED',
-  ERROR: 'ERROR'
-};
 
 exports.Prisma.ModelName = {
   User: 'User',

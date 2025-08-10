@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { UserStatus, ThemePreference } from '../../enums';
 import { loginSchema, logoutSchema } from './login.schema';
 import { baseRegistrationSchema } from './register.schema';
 import { changePasswordSchema, passwordResetRequestSchema, passwordResetSchema, refreshTokenSchema } from './changePassword.schema';
@@ -44,10 +45,10 @@ export const userResponseSchema = z.object({
   bio: z.string().nullable(),
   phoneNumber: z.string(),
   lastActivityDate: z.date(),
-  status: z.enum(['OFFLINE', 'ONLINE', 'BUSY', 'AWAY', 'DO_NOT_DISTURB']),
+  status: z.nativeEnum(UserStatus),
   isActive: z.boolean(),
   isVerified: z.boolean(),
-  themePreference: z.enum(['LIGHT', 'DARK', 'SYSTEM_DEFAULT']),
+  themePreference: z.nativeEnum(ThemePreference),
   notificationSettings: z.record(z.any(), z.string()),
   privacySettings: z.record(z.any(), z.string()),
   createdAt: z.date(),
