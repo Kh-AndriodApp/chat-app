@@ -10,20 +10,22 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "baseUrl": ".",                      
+    "baseUrl": ".",
     "paths": {
       "@models/*": ["src/models/*"],
       "@controllers/*": ["src/controllers/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
       "@prisma-sys-client": ["database/prisma/app/generated/prisma/client"],
-  "@chat-app/validators/*": ["../shared/src/validators/*"],
-  "@chat-app/enums": ["../shared/src/enums/index.ts"],
-  "@chat-app/enums/*": ["../shared/src/enums/*"]
+      "@chat-app/validators/*": ["../shared/src/validators/*"],
+      "@chat-app/enums": ["../shared/src/enums/index.ts"],
+      "@chat-app/enums/*": ["../shared/src/enums/*"]
     }
   },
-  "include": ["src/**/*", "database/prisma/**/*"],
-   "references": [
-    { "path": "../shared" }
-  ]
+  "include": [
+    "src/**/*",
+    "database/prisma/**/*",
+    "database/cassandra/**/*"
+  ],
+  "references": [{ "path": "../shared" }]
 }
