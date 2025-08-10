@@ -1,7 +1,7 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { types } from 'cassandra-driver';
-import { CassandraService } from '../services/cassandra.service';
-import { UserStatus } from '../../database/cassandra/UserPresence';
+import { CassandraService } from '../services/message.service';
+import { UserStatus } from '../database/cassandra/UserPresence';
 import { z } from 'zod';
 
 // Validation schemas

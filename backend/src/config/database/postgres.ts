@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma-sys-client';
+import { PrismaClient } from 'src/database/prisma/app/generated/prisma/client';
 
 export const prisma = new PrismaClient();
 
@@ -10,7 +10,7 @@ export type {
   ChatRoom,
   ChatRoomMember,
   Attachment,
-} from '@prisma-sys-client';
+} from 'src/database/prisma/app/generated/prisma/client';
 
 export async function connectPostgres(): Promise<void> {
   try {

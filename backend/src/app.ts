@@ -9,7 +9,7 @@ import {
 } from 'fastify-type-provider-zod';
 import registerSwagger from '@utils/swagger';
 import CassandraConnection from './config/database/cassandra';
-import { CassandraService } from './services/cassandra.service';
+import { CassandraService } from './services/message.service';
 dotenv.config();
 
 

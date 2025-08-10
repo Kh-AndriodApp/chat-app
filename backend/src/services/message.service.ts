@@ -1,7 +1,6 @@
 import { types } from 'cassandra-driver';
 import CassandraConnection from '../config/database/cassandra';
-import { MessageModel, MessageType } from '../../database/cassandra/Message';
-import { UserPresenceModel, UserStatus } from '../../database/cassandra/UserPresence';
+import { MessageModel, UserPresenceModel } from '../database/cassandra';
 
 export class CassandraService {
   private static instance: CassandraService;
@@ -273,7 +272,7 @@ export class CassandraService {
 
   // Migration helper
   async runMigrations(): Promise<void> {
-    const { allCassandraMigrations } = await import('../../database/cassandra');
+    const { allCassandraMigrations } = await import('../database/cassandra');
     await CassandraConnection.runMigrations(allCassandraMigrations);
   }
 }

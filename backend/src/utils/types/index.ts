@@ -1,5 +1,5 @@
 import type { UserStatus, ThemePreference, DeviceType, RelationshipStatus, ChatRoomType, ChatRoomRole, VirusScanStatus } from "@chat-app/enums";
-import { MessageDeliveryStatusType, MessageType } from "database/cassandra";
+import { MessageDeliveryStatusType, MessageType } from "src/database/cassandra";
 
 // JSON Models for JSONB fields
 export interface NotificationSettingsModel {
