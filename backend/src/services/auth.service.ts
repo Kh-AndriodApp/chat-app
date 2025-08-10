@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { prisma } from '../models/postgres';
 import { User, UserSession } from '../models/postgres';
 import { DeviceInfoModel } from '../utils/types';
+import { InvalidCredentialsException, AccountDeactivatedException, InvalidOrExpiredRefreshTokenException, UserNotFoundException, InvalidCurrentPasswordException, InvalidOrExpiredResetTokenException, CredentialsAlreadyExistException } from '@utils/exceptions/auth';
 
 export interface LoginCredentials {
   identifier: string; // can be email, phone, or username
@@ -40,16 +41,12 @@ class AuthService {
   private readonly refreshTokenExpiry = '7d';
 
   async register(data: RegisterData): Promise<AuthResult> {
-    if (!data.email && !data.phoneNumber) {
-      throw new Error('Either email or phone number is required');
-    }
-
     const existingUser = await this.findUserByIdentifier(
       data.email || data.phoneNumber || data.username
     );
 
     if (existingUser) {
-      throw new Error('User already exists with this email, phone, or username');
+      throw new CredentialsAlreadyExistException();
     }
 
     const hashedPassword = await bcrypt.hash(data.password, this.saltRounds);
@@ -67,8 +64,9 @@ class AuthService {
       },
     });
 
-    // Create session and tokens
     const tokens = await this.generateTokens(user.documentId);
+
+    //TODO: send the actual ipAddress
     const session = await this.createSession(user.documentId, tokens, {
       userAgent: 'Registration',
       ipAddress: '0.0.0.0',
@@ -82,34 +80,28 @@ class AuthService {
   }
 
   async login(credentials: LoginCredentials): Promise<AuthResult> {
-    // Find user by identifier (email, phone, or username)
     const user = await this.findUserByIdentifier(credentials.identifier);
 
     if (!user) {
-      throw new Error('Invalid credentials');
+      throw new InvalidCredentialsException();
     }
 
     if (!user.isActive) {
-      throw new Error('Account is deactivated');
+      throw new AccountDeactivatedException();
     }
 
-    // Verify password
     const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
     if (!isPasswordValid) {
-      throw new Error('Invalid credentials');
+      throw new InvalidCredentialsException();
     }
 
-    // Generate tokens
     const tokens = await this.generateTokens(user.documentId);
-
-    // Create session
     const session = await this.createSession(user.documentId, tokens, {
       deviceInfo: credentials.deviceInfo,
       userAgent: credentials.userAgent,
       ipAddress: credentials.ipAddress,
     });
 
-    // Update last activity
     await prisma.user.update({
       where: { id: user.id },
       data: {
@@ -128,7 +120,6 @@ class AuthService {
   }
 
   async refreshTokens(refreshToken: string): Promise<AuthResult> {
-    // Find session by refresh token
     const session = await prisma.userSession.findFirst({
       where: {
         refreshToken,
@@ -143,17 +134,14 @@ class AuthService {
     });
 
     if (!session || !session.user) {
-      throw new Error('Invalid refresh token');
+      throw new InvalidOrExpiredRefreshTokenException();
     }
 
     if (!session.user.isActive) {
-      throw new Error('Account is deactivated');
+      throw new AccountDeactivatedException();
     }
 
-    // Generate new tokens
     const tokens = await this.generateTokens(session.userId);
-
-    // Update session
     const updatedSession = await prisma.userSession.update({
       where: { id: session.id },
       data: {
@@ -202,7 +190,7 @@ class AuthService {
   async verifyToken(token: string): Promise<User | null> {
     try {
       const decoded = jwt.verify(token, this.getJwtSecret()) as { userId: string };
-      
+
       const session = await prisma.userSession.findFirst({
         where: {
           sessionToken: token,
@@ -220,7 +208,6 @@ class AuthService {
         return null;
       }
 
-      // Update last activity
       await prisma.userSession.update({
         where: { id: session.id },
         data: {
@@ -260,9 +247,8 @@ class AuthService {
       { expiresIn: this.refreshTokenExpiry }
     );
 
-    // Calculate expiry date
     const expiresAt = new Date();
-    expiresAt.setDate(expiresAt.getDate() + 7); // 7 days for refresh token
+    expiresAt.setDate(expiresAt.getDate() + 7);
 
     return {
       accessToken,
@@ -286,7 +272,7 @@ class AuthService {
         userId,
         sessionToken: tokens.accessToken,
         refreshToken: tokens.refreshToken,
-        //deviceInfo: sessionInfo.deviceInfo || null,
+        deviceInfo: JSON.stringify(sessionInfo.deviceInfo || {}),
         userAgent: sessionInfo.userAgent,
         ipAddress: sessionInfo.ipAddress,
         expiresAt: tokens.expiresAt,
@@ -309,19 +295,18 @@ class AuthService {
     return secret;
   }
 
-  // Utility methods
   async changePassword(userId: string, oldPassword: string, newPassword: string): Promise<void> {
     const user = await prisma.user.findUnique({
       where: { documentId: userId },
     });
 
     if (!user) {
-      throw new Error('User not found');
+      throw new UserNotFoundException();
     }
 
     const isOldPasswordValid = await bcrypt.compare(oldPassword, user.password);
     if (!isOldPasswordValid) {
-      throw new Error('Current password is incorrect');
+      throw new InvalidCurrentPasswordException();
     }
 
     const hashedNewPassword = await bcrypt.hash(newPassword, this.saltRounds);
@@ -335,18 +320,15 @@ class AuthService {
       },
     });
 
-    // Logout from all other sessions
     await this.logoutAll(userId);
   }
 
   async requestPasswordReset(identifier: string): Promise<string> {
     const user = await this.findUserByIdentifier(identifier);
     if (!user) {
-      // Don't reveal if user exists or not for security
       return 'If an account with this identifier exists, a password reset link will be sent.';
     }
 
-    // Generate reset token (in real app, store this in database with expiry)
     const resetToken = jwt.sign(
       { userId: user.documentId, type: 'password_reset' },
       this.getJwtSecret(),
@@ -367,7 +349,7 @@ class AuthService {
       };
 
       if (decoded.type !== 'password_reset') {
-        throw new Error('Invalid reset token');
+        throw new InvalidOrExpiredResetTokenException();
       }
 
       const hashedPassword = await bcrypt.hash(newPassword, this.saltRounds);
@@ -380,10 +362,9 @@ class AuthService {
         },
       });
 
-      // Logout from all sessions
       await this.logoutAll(decoded.userId);
     } catch {
-      throw new Error('Invalid or expired reset token');
+      throw new InvalidOrExpiredResetTokenException();
     }
   }
 }

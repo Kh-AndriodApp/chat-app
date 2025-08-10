@@ -1,12 +1,21 @@
 import { FastifyInstance } from 'fastify';
 import { authController } from '../../../controllers/auth.controller';
 import { authenticateToken } from '../../../middleware/auth.middleware';
-import { authRouteSchemas } from '@chat-app/validators/auth.schemas';
+import { authRouteSchemas } from '@chat-app/validators/auth/base.schemas';
+import { validateRegisterRequest } from '@chat-app/validators/auth/register.schema';
 
 export default async function authRoutes(fastify: FastifyInstance) {
   fastify.post('/register', {
     schema: authRouteSchemas.register,
-    
+    preHandler: (request, reply, done) => {
+      const res = validateRegisterRequest(request.body);
+      if (!res.success) {
+        reply.status(400).send(res.error);
+        return;
+      }
+
+      return authenticateToken(request, reply, done);
+    },
   }, authController.register);
   
   fastify.post('/login', {

@@ -1,16 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { authService } from '../services/auth.service';
-import {
-  RegisterRequest,
-  LoginRequest,
-  RefreshTokenRequest,
-  ChangePasswordRequest,
-  PasswordResetRequestRequest,
-  PasswordResetRequest,
-  LogoutRequest,
-  UpdateProfileRequest,
-  UpdateUserSettingsRequest,
-} from '@chat-app/validators/auth.schemas';
+import type { LoginRequest, RegisterRequest, RefreshTokenRequest, LogoutRequest, ChangePasswordRequest, PasswordResetRequestRequest, PasswordResetRequest, UpdateProfileRequest, UpdateUserSettingsRequest } from '@chat-app/validators/auth/base.schemas';
 
 
 class AuthController {
@@ -31,7 +21,7 @@ class AuthController {
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Registration failed';
-      
+
       if (message.includes('already exists')) {
         return reply.status(409).send({
           success: false,
@@ -49,7 +39,7 @@ class AuthController {
   async login(request: FastifyRequest<{ Body: LoginRequest }>, reply: FastifyReply) {
     try {
       const data = request.body;
-      
+
       // Extract request metadata
       const loginCredentials = {
         ...data,
@@ -71,7 +61,7 @@ class AuthController {
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Login failed';
-      
+
       if (message.includes('Invalid credentials')) {
         return reply.status(401).send({
           success: false,
@@ -110,7 +100,7 @@ class AuthController {
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Token refresh failed';
-      
+
       return reply.status(401).send({
         success: false,
         message: message.includes('Invalid') ? 'Invalid or expired refresh token' : message,
@@ -118,7 +108,7 @@ class AuthController {
     }
   }
 
-  async logout(request:  FastifyRequest<{ Body: LogoutRequest }>, reply: FastifyReply) {
+  async logout(request: FastifyRequest<{ Body: LogoutRequest }>, reply: FastifyReply) {
     try {
       const data = request.body;
       const sessionToken = data.sessionToken || request.headers.authorization?.replace('Bearer ', '');
@@ -185,7 +175,7 @@ class AuthController {
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Password change failed';
-      
+
       if (message.includes('incorrect')) {
         return reply.status(400).send({
           success: false,
@@ -228,7 +218,7 @@ class AuthController {
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Password reset failed';
-      
+
       return reply.status(400).send({
         success: false,
         message: message.includes('Invalid') ? 'Invalid or expired reset token' : message,
@@ -270,10 +260,10 @@ class AuthController {
       }
 
       const data = request.body;
-      
+
       // Import prisma here to avoid circular dependencies
       const { prisma } = await import('../models/postgres');
-      
+
       const updatedUser = await prisma.user.update({
         where: { documentId: request.user.documentId },
         data: {
@@ -310,10 +300,10 @@ class AuthController {
       }
 
       const data = request.body;
-      
+
       // Import prisma here to avoid circular dependencies
       const { prisma } = await import('../models/postgres');
-      
+
       const updatedUser = await prisma.user.update({
         where: { documentId: request.user.documentId },
         data: {
